@@ -48,48 +48,39 @@ public class Login extends AppCompatActivity {
         btn = findViewById(R.id.login_btn);
         textView = findViewById(R.id.new_sign_up);
 
-        textView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), SignUp_Customer.class);
-                startActivity(intent);
-                finish();
-            }
+        textView.setOnClickListener(view -> {
+            Intent intent = new Intent(getApplicationContext(), SignUp_Customer.class);
+            startActivity(intent);
+            finish();
         });
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String email, password;
-                email = String.valueOf(editEmail.getText());
-                password = String.valueOf(editPassword.getText());
+        btn.setOnClickListener(view -> {
+            String email, password;
+            email = String.valueOf(editEmail.getText());
+            password = String.valueOf(editPassword.getText());
 
-                if (TextUtils.isEmpty(email)) {
-                    Toast.makeText(Login.this, "Enter Email", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                if (TextUtils.isEmpty(password)) {
-                    Toast.makeText(Login.this, "Enter Password", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                mAuth.signInWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-                                    // Sign in success, update UI with the signed-in user's information
-                                    Toast.makeText(Login.this, "Login Successful!", Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                                    startActivity(intent);
-                                    finish();
-                                } else {
-                                    Toast.makeText(Login.this, "Authentication failed.",
-                                            Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        });
+            if (TextUtils.isEmpty(email)) {
+                Toast.makeText(Login.this, "Enter Email", Toast.LENGTH_SHORT).show();
+                return;
             }
+
+            if (TextUtils.isEmpty(password)) {
+                Toast.makeText(Login.this, "Enter Password", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            mAuth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Toast.makeText(Login.this, "Login Successful!", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                            startActivity(intent);
+                            finish();
+                        } else {
+                            Toast.makeText(Login.this, "Authentication failed.",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    });
         });
     }
 }
