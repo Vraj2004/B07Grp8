@@ -3,6 +3,7 @@ package com.example.myfirstapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -22,27 +23,16 @@ public class SignUp_Customer extends AppCompatActivity {
     Button btn;
     FirebaseAuth mAuth;
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser != null){
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(intent);
-            finish();
-        }
-    }
-
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up_shopper);
 
         mAuth = FirebaseAuth.getInstance();
-        editEmail = findViewById(R.id.email);
-        editPassword = findViewById(R.id.password);
-        btn = findViewById(R.id.sign_up_btn);
+        editEmail = findViewById(R.id.cust_email);
+        editPassword = findViewById(R.id.cust_password);
+        btn = findViewById(R.id.sign_up_btn_cust);
 
         btn.setOnClickListener(view -> {
             String email, password;
@@ -60,16 +50,16 @@ public class SignUp_Customer extends AppCompatActivity {
             }
 
             mAuth.createUserWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(task -> {
-                        if (task.isSuccessful()) {
-                            Toast.makeText(SignUp_Customer.this, "Account Created!",
-                                    Toast.LENGTH_SHORT).show();
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Toast.makeText(SignUp_Customer.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
-                        }
-                    });
+            .addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    Toast.makeText(SignUp_Customer.this, "Account Created!",
+                            Toast.LENGTH_SHORT).show();
+                } else {
+                    // If sign in fails, display a message to the user.
+                    Toast.makeText(SignUp_Customer.this, "Authentication failed.",
+                            Toast.LENGTH_SHORT).show();
+                }
+            });
         });
     }
 }
