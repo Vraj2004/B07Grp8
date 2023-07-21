@@ -11,4 +11,10 @@
     <string name="password">Password</string>
     <string name="login">Login</string>
     <string name="new_sign_up">Don\'t Have an Account? Sign up!</string>
+    <string name="logo">Logo</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="username">Username</string>
+    <string name="store_name">Store Name</string>
+    <string name="category">Category</string>
 </resources>
