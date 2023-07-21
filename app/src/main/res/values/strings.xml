@@ -10,4 +10,5 @@
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
+    <string name="new_sign_up">Don\'t Have an Account? Sign up!</string>
 </resources>

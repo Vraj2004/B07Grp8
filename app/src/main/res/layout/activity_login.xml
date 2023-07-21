@@ -10,6 +10,13 @@
     tools:context=".Login"
     android:background="@drawable/login_background">
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="25dp"
+        app:srcCompat="@drawable/logo3" />
+
     <TextView
         android:text="@string/welcome_back"
         android:textSize="25sp"
@@ -30,7 +37,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/email"
-            android:layout_width="262dp"
+            android:layout_width="260dp"
             android:layout_height="50dp"
             android:background="@drawable/rounded_buttons"
             android:textColor="@color/white"
@@ -58,9 +65,17 @@
 
     <Button
         android:id="@+id/login_btn"
-        android:layout_width="200dp"
+        android:layout_width="260dp"
         android:layout_height="wrap_content"
-        android:textColor="@color/d32966"
         android:backgroundTint="@color/white"
-        android:text="@string/login" />
+        android:text="@string/login"
+        android:textColor="@color/d32966" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/new_sign_up"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:layout_marginTop="8dp"
+        />
 </LinearLayout>
