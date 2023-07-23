@@ -18,7 +18,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class SignUp_Customer extends AppCompatActivity {
+public class
+SignUp_Customer extends AppCompatActivity {
     TextInputEditText editEmail, editPassword;
     Button btn;
     FirebaseAuth mAuth;
