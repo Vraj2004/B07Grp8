@@ -15,4 +15,9 @@
     <string name="store_name">Store Name</string>
     <string name="category">Category</string>
     <string name="search">Search</string>
+    <string name="who_are_you">Who are you?</string>
+    <string name="seller">Seller</string>
+    <string name="shopper">Shopper</string>
+    <string name="test">TEST</string>
+    <string name="sign_out">Sign Out</string>
 </resources>
