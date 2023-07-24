@@ -7,5 +7,14 @@
     android:fitsSystemWindows="true"
     tools:context=".MainActivity">
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/signOut"
+        android:text="@string/sign_out"
+        android:textStyle="bold"
+        android:backgroundTint="@color/black"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
