@@ -30,7 +30,7 @@
         android:gravity="center">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/Username"
+            android:id="@+id/username_cust"
             android:layout_width="260dp"
             android:layout_height="50dp"
             android:background="@drawable/rounded_buttons"
