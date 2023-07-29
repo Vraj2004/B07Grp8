@@ -43,6 +43,8 @@
         android:textSize="17sp"
         android:paddingLeft="12sp"
         android:textColorHint="@color/white"
+        android:inputType="textEmailAddress"
+        android:singleLine="true"
         android:layout_marginBottom="20dp"
         android:hint="@string/email"
         />
@@ -57,6 +59,8 @@
         android:paddingLeft="12sp"
         android:textColorHint="@color/white"
         android:layout_marginBottom="20dp"
+        android:inputType="textPassword"
+        android:singleLine="true"
         android:hint="@string/password" />
 
     <EditText
@@ -69,6 +73,8 @@
         android:textColorHint="@color/white"
         android:paddingLeft="12sp"
         android:layout_marginBottom="20dp"
+        android:inputType="textPassword"
+        android:singleLine="true"
         android:hint="@string/confirm_password" />
 
     <Button

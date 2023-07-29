@@ -21,45 +21,31 @@
         android:layout_height="wrap_content"
         />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+    <EditText
+        android:id="@+id/username_owner"
+        android:layout_width="260dp"
+        android:layout_height="50dp"
+        android:background="@drawable/rounded_buttons"
+        android:textColor="@color/white"
+        android:textSize="17sp"
+        android:paddingLeft="12sp"
+        android:textColorHint="@color/white"
         android:layout_marginBottom="20dp"
-        app:hintEnabled="false"
-        android:gravity="center">
+        android:singleLine="true"
+        android:hint="@string/username" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/username_owner"
-            android:layout_width="260dp"
-            android:layout_height="50dp"
-            android:background="@drawable/rounded_buttons"
-            android:textColor="@color/white"
-            android:textSize="17sp"
-            android:paddingLeft="12sp"
-            android:textColorHint="@color/white"
-            android:hint="@string/username" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+    <EditText
+        android:id="@+id/Store_Name"
+        android:layout_width="260dp"
+        android:layout_height="50dp"
+        android:background="@drawable/rounded_buttons"
+        android:textColor="@color/white"
+        android:textSize="17sp"
+        android:paddingLeft="12sp"
+        android:textColorHint="@color/white"
         android:layout_marginBottom="20dp"
-        app:hintEnabled="false"
-        android:gravity="center">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/Store_Name"
-            android:layout_width="260dp"
-            android:layout_height="50dp"
-            android:background="@drawable/rounded_buttons"
-            android:textColor="@color/white"
-            android:textSize="17sp"
-            android:paddingLeft="12sp"
-            android:textColorHint="@color/white"
-            android:hint="@string/store_name" />
-
-    </com.google.android.material.textfield.TextInputLayout>
+        android:singleLine="true"
+        android:hint="@string/store_name" />
 
     <!--Spinner
         android:id="@+id/Category"
@@ -73,85 +59,60 @@
         android:textColorHint="@color/white"
         android:hint="@string/category" /-->
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+    <EditText
+        android:id="@+id/Category"
+        android:layout_width="260dp"
+        android:layout_height="50dp"
+        android:background="@drawable/rounded_buttons"
+        android:textColor="@color/white"
+        android:textSize="17sp"
+        android:paddingLeft="12sp"
+        android:textColorHint="@color/white"
         android:layout_marginBottom="20dp"
-        app:hintEnabled="false"
-        android:gravity="center">
+        android:singleLine="true"
+        android:hint="@string/category" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/Category"
-            android:layout_width="260dp"
-            android:layout_height="50dp"
-            android:background="@drawable/rounded_buttons"
-            android:textColor="@color/white"
-            android:textSize="17sp"
-            android:paddingLeft="12sp"
-            android:textColorHint="@color/white"
-            android:hint="@string/category" />
-
-    </com.google.android.material.textfield.TextInputLayout >
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+    <EditText
+        android:id="@+id/owner_email"
+        android:layout_width="260dp"
+        android:layout_height="50dp"
+        android:background="@drawable/rounded_buttons"
+        android:textColor="@color/white"
+        android:textSize="17sp"
+        android:paddingLeft="12sp"
+        android:textColorHint="@color/white"
         android:layout_marginBottom="20dp"
-        app:hintEnabled="false"
-        android:gravity="center">
+        android:inputType="textEmailAddress"
+        android:singleLine="true"
+        android:hint="@string/email" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/owner_email"
-            android:layout_width="260dp"
-            android:layout_height="50dp"
-            android:background="@drawable/rounded_buttons"
-            android:textColor="@color/white"
-            android:textSize="17sp"
-            android:paddingLeft="12sp"
-            android:textColorHint="@color/white"
-            android:hint="@string/email" />
+   <EditText
+       android:id="@+id/owner_password"
+       android:layout_width="260dp"
+       android:layout_height="50dp"
+       android:background="@drawable/rounded_buttons"
+       android:textColor="@color/white"
+       android:textSize="17sp"
+       android:paddingLeft="12sp"
+       android:textColorHint="@color/white"
+       android:layout_marginBottom="20dp"
+       android:inputType="textPassword"
+       android:singleLine="true"
+       android:hint="@string/password" />
 
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+    <EditText
+        android:id="@+id/confirm_password_owner"
+        android:layout_width="260dp"
+        android:layout_height="50dp"
+        android:background="@drawable/rounded_buttons"
+        android:textColor="@color/white"
+        android:textSize="17sp"
+        android:paddingLeft="12sp"
+        android:textColorHint="@color/white"
         android:layout_marginBottom="20dp"
-        app:hintEnabled="false"
-        android:gravity="center">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/owner_password"
-            android:layout_width="260dp"
-            android:layout_height="50dp"
-            android:background="@drawable/rounded_buttons"
-            android:textColor="@color/white"
-            android:textSize="17sp"
-            android:paddingLeft="12sp"
-            android:textColorHint="@color/white"
-            android:hint="@string/password" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        app:hintEnabled="false"
-        android:gravity="center">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/confirm_password_owner"
-            android:layout_width="260dp"
-            android:layout_height="50dp"
-            android:background="@drawable/rounded_buttons"
-            android:textColor="@color/white"
-            android:textSize="17sp"
-            android:paddingLeft="12sp"
-            android:textColorHint="@color/white"
-            android:hint="@string/confirm_password" />
-
-    </com.google.android.material.textfield.TextInputLayout>
+        android:inputType="textPassword"
+        android:singleLine="true"
+        android:hint="@string/confirm_password" />
 
     <Button
         android:id="@+id/sign_up_btn_owner"
