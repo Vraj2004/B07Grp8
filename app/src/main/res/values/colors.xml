@@ -4,4 +4,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="colorPrimary">#6200EE</color>
     <color name="d32966">#d32966</color>
+    <color name="Transparency">#00ffffff</color>
+    <color name="startColor">#FDB601</color>
+    <color name="centerColor">#ee531f</color>
+    <color name="endColor">#9B0455</color>
 </resources>
