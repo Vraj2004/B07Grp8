@@ -18,20 +18,16 @@ public class WhoAreYouPage extends AppCompatActivity {
         shopper = findViewById(R.id.ShopperButton);
         seller = findViewById(R.id.SellerButton);
 
-        shopper.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        shopper.setOnClickListener(view ->{
                 Intent shopper_intent = new Intent(getApplicationContext(), SignUp_Customer.class);
                 startActivity(shopper_intent);
-            }
+
         });
 
-        seller.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        seller.setOnClickListener( view -> {
                 Intent seller_intent = new Intent(getApplicationContext(), SignUp_Owner.class);
                 startActivity(seller_intent);
-            }
+
         });
     }
 }
