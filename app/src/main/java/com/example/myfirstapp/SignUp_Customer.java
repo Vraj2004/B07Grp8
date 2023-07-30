@@ -39,6 +39,7 @@ public class SignUp_Customer extends AppCompatActivity {
         final EditText editUser = findViewById(R.id.username_cust);
         final EditText editPasswordConfirm = findViewById(R.id.confirm_password_cust);
         final Button btn = findViewById(R.id.sign_up_btn_cust);
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
 
 
@@ -71,8 +72,17 @@ public class SignUp_Customer extends AppCompatActivity {
                             {
                                 dbRef.child("Customers").child(email).child("username").setValue(username);
                                 dbRef.child("Customers").child(email).child("password").setValue(password);
-                                Toast.makeText(SignUp_Customer.this, "Account created successfully!",
-                                        Toast.LENGTH_SHORT).show();
+                                mAuth.createUserWithEmailAndPassword(email, password)
+                                        .addOnCompleteListener(task -> {
+                                            if (task.isSuccessful()) {
+                                                Toast.makeText(SignUp_Customer.this, "Account Created!",
+                                                        Toast.LENGTH_SHORT).show();
+                                            } else {
+                                                // If sign in fails, display a message to the user.
+                                                Toast.makeText(SignUp_Customer.this, "Authentication failed.",
+                                                        Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
                                 Intent customer_intent = new Intent(getApplicationContext(), Login.class);
                                 startActivity(customer_intent);
                             }
