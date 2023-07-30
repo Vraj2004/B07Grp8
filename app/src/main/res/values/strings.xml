@@ -20,4 +20,6 @@
     <string name="shopper">Shopper</string>
     <string name="test">TEST</string>
     <string name="sign_out">Sign Out</string>
+    <string name="stop2go">Stop2Go</string>
+    <string name="stop_shop_save">Stop. Shop. Save.</string>
 </resources>
