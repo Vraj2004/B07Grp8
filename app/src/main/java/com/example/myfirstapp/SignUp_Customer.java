@@ -48,7 +48,7 @@ public class SignUp_Customer extends AppCompatActivity {
                 }
                 else
                 {
-                    dbRef.child("Customers").addListenerForSingleValueEvent(new ValueEventListener(){
+                    dbRef.child("Users").addListenerForSingleValueEvent(new ValueEventListener(){
 
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -59,21 +59,14 @@ public class SignUp_Customer extends AppCompatActivity {
                             }
                             else
                             {
-                                dbRef.child("Customers").child(email).child("username").setValue(username);
-                                dbRef.child("Customers").child(email).child("password").setValue(password);
-                                mAuth.createUserWithEmailAndPassword(email, password)
-                                        .addOnCompleteListener(task -> {
-                                            if (task.isSuccessful()) {
-                                                Toast.makeText(SignUp_Customer.this, "Account Created!",
-                                                        Toast.LENGTH_SHORT).show();
-                                            } else {
-                                                // If sign in fails, display a message to the user.
-                                                Toast.makeText(SignUp_Customer.this, "Authentication failed.",
-                                                        Toast.LENGTH_SHORT).show();
-                                            }
-                                        });
+                                dbRef.child("Users").child(email).child("username").setValue(username);
+                                dbRef.child("Users").child(email).child("password").setValue(password);
+                                dbRef.child("Users").child(email).child("personality").setValue("Customer");
+                                Toast.makeText(SignUp_Customer.this, "Account Created!",
+                                        Toast.LENGTH_SHORT).show();
                                 Intent customer_intent = new Intent(getApplicationContext(), Login.class);
                                 startActivity(customer_intent);
+                                finish();
                             }
 
                         }

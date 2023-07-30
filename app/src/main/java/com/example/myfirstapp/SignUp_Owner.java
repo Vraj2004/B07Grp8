@@ -8,8 +8,12 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -58,7 +62,7 @@ public class SignUp_Owner extends AppCompatActivity {
                 }
                 else
                 {
-                    dbRef.child("Sellers").addListenerForSingleValueEvent(new ValueEventListener(){
+                    dbRef.child("Users").addListenerForSingleValueEvent(new ValueEventListener(){
 
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -69,13 +73,16 @@ public class SignUp_Owner extends AppCompatActivity {
                             }
                             else
                             {
-                                dbRef.child("Sellers").child(email).child("username").setValue(username);
-                                dbRef.child("Sellers").child(email).child("password").setValue(password);
-                                dbRef.child("Sellers").child(email).child("store name").setValue(storeName);
+                                dbRef.child("Users").child(email).child("username").setValue(username);
+                                dbRef.child("Users").child(email).child("password").setValue(password);
+                                dbRef.child("Users").child(email).child("store name").setValue(storeName);
+                                dbRef.child("Users").child(email).child("personality").setValue("Seller");
                                 Toast.makeText(SignUp_Owner.this, "Account created successfully!",
                                         Toast.LENGTH_SHORT).show();
+
                                 Intent seller_intent = new Intent(getApplicationContext(), Login.class);
                                 startActivity(seller_intent);
+                                finish();
                             }
 
                         }
