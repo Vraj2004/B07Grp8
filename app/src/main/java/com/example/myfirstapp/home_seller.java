@@ -5,6 +5,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -80,10 +81,18 @@ public class home_seller extends AppCompatActivity {
 
         TextView productView = view_2.findViewById(R.id.name);
         Button delete = view_2.findViewById(R.id.delete_button);
+        Button edit = view_2.findViewById(R.id.edit_button);
 
         productView.setText(product);
 
-
+        edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), ProductEditPage.class);
+                intent.putExtra("PRODUCT_NAME", product);
+                startActivity(intent);
+            }
+        });
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
@@ -94,4 +103,3 @@ public class home_seller extends AppCompatActivity {
         layout.addView(view_2);
     }
 }
-
