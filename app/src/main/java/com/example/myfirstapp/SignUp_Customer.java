@@ -48,25 +48,29 @@ public class SignUp_Customer extends AppCompatActivity {
                 }
                 else
                 {
-                    dbRef.child("Users").addListenerForSingleValueEvent(new ValueEventListener(){
+                    dbRef.child("Customers").addListenerForSingleValueEvent(new ValueEventListener(){
+
 
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            if (snapshot.hasChild(email))
+
+                            if (snapshot.child(email).exists())
                             {
+                                Toast.makeText(SignUp_Customer.this, "SHOULD NOT BE HERE",Toast.LENGTH_SHORT).show();
                                 Toast.makeText(SignUp_Customer.this, "This email is already registered",
                                         Toast.LENGTH_SHORT).show();
                             }
                             else
                             {
-                                dbRef.child("Users").child(email).child("username").setValue(username);
-                                dbRef.child("Users").child(email).child("password").setValue(password);
-                                dbRef.child("Users").child(email).child("personality").setValue("Customer");
+                                Toast.makeText(SignUp_Customer.this, "REACHED",Toast.LENGTH_SHORT).show();
+                                dbRef.child("Customers").child(email).child("username").setValue(username);
+                                dbRef.child("Customers").child(email).child("password").setValue(password);
+                                dbRef.child("Customers").child(email).child("personality").setValue("Customer");
                                 Toast.makeText(SignUp_Customer.this, "Account Created!",
                                         Toast.LENGTH_SHORT).show();
                                 Intent customer_intent = new Intent(getApplicationContext(), Login.class);
                                 startActivity(customer_intent);
-                                finish();
+                                //finish();
                             }
 
                         }

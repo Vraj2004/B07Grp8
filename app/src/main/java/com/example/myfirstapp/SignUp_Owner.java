@@ -62,7 +62,7 @@ public class SignUp_Owner extends AppCompatActivity {
                 }
                 else
                 {
-                    dbRef.child("Users").addListenerForSingleValueEvent(new ValueEventListener(){
+                    dbRef.child("Sellers").addListenerForSingleValueEvent(new ValueEventListener(){
 
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -73,10 +73,10 @@ public class SignUp_Owner extends AppCompatActivity {
                             }
                             else
                             {
-                                dbRef.child("Users").child(email).child("username").setValue(username);
-                                dbRef.child("Users").child(email).child("password").setValue(password);
-                                dbRef.child("Users").child(email).child("store name").setValue(storeName);
-                                dbRef.child("Users").child(email).child("personality").setValue("Seller");
+                                dbRef.child("Sellers").child(email).child("username").setValue(username);
+                                dbRef.child("Sellers").child(email).child("password").setValue(password);
+                                dbRef.child("Sellers").child(email).child("store name").setValue(storeName);
+                                dbRef.child("Sellers").child(email).child("personality").setValue("Seller");
                                 Toast.makeText(SignUp_Owner.this, "Account created successfully!",
                                         Toast.LENGTH_SHORT).show();
 
