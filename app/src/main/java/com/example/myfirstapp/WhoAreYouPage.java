@@ -21,13 +21,13 @@ public class WhoAreYouPage extends AppCompatActivity {
         shopper.setOnClickListener(view ->{
                 Intent shopper_intent = new Intent(getApplicationContext(), SignUp_Customer.class);
                 startActivity(shopper_intent);
-
+                finish();
         });
 
         seller.setOnClickListener( view -> {
                 Intent seller_intent = new Intent(getApplicationContext(), SignUp_Owner.class);
                 startActivity(seller_intent);
-
+                finish();
         });
     }
 }
