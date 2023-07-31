@@ -16,6 +16,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
@@ -30,7 +32,7 @@ import com.google.firebase.database.ValueEventListener;
 public class Login extends AppCompatActivity {
 
     DatabaseReference dbRef = FirebaseDatabase.getInstance().getReferenceFromUrl("https://b07-final-project-dbff5-default-rtdb.firebaseio.com/");
-
+    FirebaseAuth mAuth = FirebaseAuth.getInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,62 +47,50 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String email, password;
-                email = String.valueOf(editEmail.getText().toString());
+                email = editEmail.getText().toString();
                 password = editPassword.getText().toString();
 
                 if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password) ) {
                     Toast.makeText(Login.this, "Please fill all fields", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                else {
-
-                    dbRef.child("Users").addListenerForSingleValueEvent(new ValueEventListener(){
-
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            if (snapshot.hasChild(email))
-                            {
-                                String storedPassword = snapshot.child(email).child("password").getValue(String.class);
-                                if(storedPassword.equals(password))
-                                {
-                                    Toast.makeText(Login.this, "Login Successful!",
-                                            Toast.LENGTH_SHORT).show();
-                                    Intent customer_intent = new Intent(getApplicationContext(), Customer_home.class);
-                                    startActivity(customer_intent);
-                                    finish();
-                                }
-                                else {
-                                    Toast.makeText(Login.this, "Incorrect email or password",
-                                            Toast.LENGTH_SHORT).show();
-                                    Intent customer_intent = new Intent(getApplicationContext(), Login.class);
-                                    startActivity(customer_intent);
-                                    finish();
-                                }
-                            }
-                            else
-                            {
-                                Toast.makeText(Login.this, "No such account exists",
-                                        Toast.LENGTH_SHORT).show();
-                                Intent customer_intent = new Intent(getApplicationContext(), Login.class);
-                                startActivity(customer_intent);
-                                finish();
-
-                            }
-
-                        }
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
-                    });
-                }
+                mAuth.signInWithEmailAndPassword(email, password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                    @Override
+                    public void onSuccess(AuthResult authResult) {
+                            Toast.makeText(Login.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                            finish();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(Login.this, "Failed to Login", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(getApplicationContext(), Login.class));
+                            finish();
+                    }
+                });
             }
         });
 
         textView.setOnClickListener(view -> {
             Intent intent = new Intent(getApplicationContext(), WhoAreYouPage.class);
             startActivity(intent);
-            finish();
         });
     }
 }
+
+//mAuth.signInWithEmailAndPassword(email, password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+//@Override
+//public void onSuccess(AuthResult authResult) {
+//        Toast.makeText(Login.this, "Login Successful", Toast.LENGTH_SHORT).show();
+//        startActivity(new Intent(getApplicationContext(), Home_Customer.class));
+//        finish();
+//        }
+//        }).addOnFailureListener(new OnFailureListener() {
+//@Override
+//public void onFailure(@NonNull Exception e) {
+//        Toast.makeText(Login.this, "Failed to Login", Toast.LENGTH_SHORT).show();
+//        startActivity(new Intent(getApplicationContext(), Login.class));
+//        finish();
+//        }
+//        });
