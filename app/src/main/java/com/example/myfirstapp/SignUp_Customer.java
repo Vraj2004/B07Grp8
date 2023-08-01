@@ -15,12 +15,15 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.database.core.ChildEventRegistration;
+
+import java.util.HashMap;
 
 public class SignUp_Customer extends AppCompatActivity {
     DatabaseReference dbRef = FirebaseDatabase.getInstance().getReferenceFromUrl("https://b07-final-project-dbff5-default-rtdb.firebaseio.com/");
@@ -48,50 +51,25 @@ public class SignUp_Customer extends AppCompatActivity {
                 username = editUser.getText().toString();
                 passwordConfirm = editPasswordConfirm.getText().toString();
 
-                if( TextUtils.isEmpty(email) || TextUtils.isEmpty(password) || TextUtils.isEmpty(username) || TextUtils.isEmpty(passwordConfirm))
-                {
-                    Toast.makeText(SignUp_Customer.this, "Please fill all fields", Toast.LENGTH_SHORT).show();
+                if (TextUtils.isEmpty(username) || TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
+                    Toast.makeText(SignUp_Customer.this, "Please fill out all the fields", Toast.LENGTH_SHORT).show();
+                    return;
                 }
-                else if (!password.equals(passwordConfirm)){
+
+                if (!password.equals(passwordConfirm)){
                     Toast.makeText(SignUp_Customer.this, "Password does not match", Toast.LENGTH_SHORT).show();
+                    return;
                 }
-//                else
-//                {
-//
-//                    dbRef.child("Users").addListenerForSingleValueEvent(new ValueEventListener(){
-//
-//                        @Override
-//                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                            if (snapshot.hasChild(email))
-//                            {
-//                                Toast.makeText(SignUp_Customer.this, "This email is already registered",
-//                                        Toast.LENGTH_SHORT).show();
-//                            }
-//                            else
-//                            {
-//                                dbRef.child("Users").child(email).child("username").setValue(username);
-//                                dbRef.child("Users").child(email).child("password").setValue(password);
-//                                dbRef.child("Users").child(email).child("personality").setValue("Customer");
-//                                Toast.makeText(SignUp_Customer.this, "Account Created!",
-//                                        Toast.LENGTH_SHORT).show();
-//                                Intent customer_intent = new Intent(getApplicationContext(), Login.class);
-//                                startActivity(customer_intent);
-//                                finish();
-//                            }
-//
-//                        }
-//
-//                        @Override
-//                        public void onCancelled(@NonNull DatabaseError error) {
-//
-//                        }
-//                    });
-//                }
+
                 fAuth.createUserWithEmailAndPassword(email, password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                     @Override
                     public void onSuccess(AuthResult authResult) {
                         Toast.makeText(SignUp_Customer.this, "Account Created", Toast.LENGTH_SHORT).show();
-
+                        HashMap<String, Object> add = new HashMap<>();
+                        add.put("Username", username);
+                        add.put("Email", email);
+                        add.put("isOwner", 0);
+                        dbRef.child("Users").push().setValue(add);
                         startActivity(new Intent(getApplicationContext(), Login.class));
                         finish();
                     }
@@ -104,6 +82,7 @@ public class SignUp_Customer extends AppCompatActivity {
                     }
                 });
             }
+
         });
     }
 }
