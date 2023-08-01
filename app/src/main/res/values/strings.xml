@@ -23,6 +23,6 @@
     <string name="stop2go">Stop2Go</string>
     <string name="stop_shop_save">Stop. Shop. Save.</string>
     <string name="shop2go">Shop2Go</string>
+    <string name="edit" />
     <string name="back_button_description">back_button_description</string>
-    <string name="edit">edit</string>
 </resources>
