@@ -25,4 +25,12 @@
     <string name="shop2go">Shop2Go</string>
     <string name="edit" />
     <string name="back_button_description">back_button_description</string>
+    <string name="home_button">home button</string>
+    <string name="cart">Cart</string>
+    <string name="my_orders">My Orders</string>
+    <string name="accounts">Accounts</string>
+    <string name="home">Home</string>
+    <string name="orders">Orders</string>
+    <string name="product_name">Product Name</string>
+    <string name="price">Price</string>
 </resources>
