@@ -30,6 +30,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class SignUp_Owner extends AppCompatActivity {
@@ -73,10 +74,16 @@ public class SignUp_Owner extends AppCompatActivity {
                     Toast.makeText(SignUp_Owner.this, "Account Created", Toast.LENGTH_SHORT).show();
                     HashMap<String, Object> add = new HashMap<>();
                     add.put("Username", username);
-                    add.put("Store Name", storeName);
                     add.put("Email", email);
                     add.put("isOwner", 1);
-                    dbRef.child("Users").push().setValue(add);
+
+                    HashMap<String, Object> store = new HashMap<>();
+                    HashMap<String, Object> item = new HashMap<>();
+                    store.put("Store Name", storeName);
+                    store.put("Items", item);
+
+                    dbRef.child("Users").child(fAuth.getUid()).setValue(add);
+                    dbRef.child("Stores").child(fAuth.getUid()).setValue(store);
                     startActivity(new Intent(getApplicationContext(), Login.class));
                     finish();
                 }

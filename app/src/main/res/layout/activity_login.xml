@@ -44,7 +44,9 @@
             android:textSize="17sp"
             android:paddingLeft="12sp"
             android:textColorHint="@color/white"
-            android:hint="@string/email" />
+            android:hint="@string/email"
+            android:singleLine="true"
+            />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -64,7 +66,9 @@
             android:textSize="17sp"
             android:paddingLeft="12sp"
             android:textColorHint="@color/white"
-            android:hint="@string/password" />
+            android:hint="@string/password"
+            android:singleLine="true"
+            android:inputType="textPassword"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
