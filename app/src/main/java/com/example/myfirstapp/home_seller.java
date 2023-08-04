@@ -14,6 +14,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 public class home_seller extends AppCompatActivity {
@@ -23,12 +25,15 @@ public class home_seller extends AppCompatActivity {
     AlertDialog dialog;
     LinearLayout layout;
 
+    String userID;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_seller);
 
-        dbRef = FirebaseDatabase.getInstance().getReference().child("Products");
+        userID = FirebaseAuth.getInstance().getUid();
+        dbRef = FirebaseDatabase.getInstance().getReference();
         add = findViewById(R.id.add_button);
         layout = findViewById(R.id.container);
 
@@ -107,11 +112,8 @@ public class home_seller extends AppCompatActivity {
                         String productName = product.getText().toString().trim();
                         if (!productName.isEmpty()) {
                             addCard(productName);
-                            // Save the product to the database
-                            // Generate a unique key for the new product
-                            String productId = dbRef.push().getKey();
-                            // Save the product to the Firebase database using the generated key
-                            dbRef.child(productName).child("Product id").setValue(productId);
+                            String pId = dbRef.push().getKey();
+                            dbRef.child("Stores").child(userID).child("Items").child(productName).setValue(productName);
                             product.setText("");
                         } else {
                             Toast.makeText(home_seller.this, "Product name cannot be empty.", Toast.LENGTH_SHORT).show();
