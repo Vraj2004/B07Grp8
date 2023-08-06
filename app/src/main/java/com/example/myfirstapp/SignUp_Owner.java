@@ -39,6 +39,7 @@ public class SignUp_Owner extends AppCompatActivity {
 
     //DatabaseReference dbRef = FirebaseDatabase.getInstance().getReferenceFromUrl("https://b07-final-project-dbff5-default-rtdb.firebaseio.com/");
     FirebaseDatabase db = FirebaseDatabase.getInstance();
+    String id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,30 +55,30 @@ public class SignUp_Owner extends AppCompatActivity {
 
 
         btn.setOnClickListener(view -> {
-                String email, password, username, storeName, passwordConfirm;
-                email = editEmail.getText().toString();
-                password = editPassword.getText().toString();
-                passwordConfirm = editPasswordConfirm.getText().toString();
-                username = editUser.getText().toString();
-                storeName = editStoreName.getText().toString();
+            String email, password, username, storeName, passwordConfirm;
+            email = editEmail.getText().toString();
+            password = editPassword.getText().toString();
+            passwordConfirm = editPasswordConfirm.getText().toString();
+            username = editUser.getText().toString();
+            storeName = editStoreName.getText().toString();
 
-                if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password) || TextUtils.isEmpty(username)
-                || TextUtils.isEmpty(storeName) || TextUtils.isEmpty(passwordConfirm)) {
-                    Toast.makeText(SignUp_Owner.this, "Please fill all fields", Toast.LENGTH_SHORT).show();
-                }
+            if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password) || TextUtils.isEmpty(username)
+                    || TextUtils.isEmpty(storeName) || TextUtils.isEmpty(passwordConfirm)) {
+                Toast.makeText(SignUp_Owner.this, "Please fill all fields", Toast.LENGTH_SHORT).show();
+            }
 
-                if (!password.equals(passwordConfirm)){
-                    Toast.makeText(SignUp_Owner.this, "Password does not match", Toast.LENGTH_SHORT).show();
-                }
+            if (!password.equals(passwordConfirm)){
+                Toast.makeText(SignUp_Owner.this, "Password does not match", Toast.LENGTH_SHORT).show();
+            }
 
             fAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful())
                     {
+                        id = fAuth.getCurrentUser().getUid();
                         UserModel userModel = new UserModel(username, email, password, 1);
-                        StoreModel storeModel = new StoreModel(storeName);
-                        String id = fAuth.getUid();
+                        StoreModel storeModel = new StoreModel(storeName,id);
                         db.getReference().child("Users").child(id).setValue(userModel);
                         db.getReference().child("Stores").child(id).setValue(storeModel);
                         Toast.makeText(SignUp_Owner.this, "Account Created", Toast.LENGTH_SHORT).show();
