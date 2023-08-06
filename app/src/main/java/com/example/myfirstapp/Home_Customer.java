@@ -19,6 +19,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -31,7 +32,6 @@ public class Home_Customer extends AppCompatActivity {
     ImageButton home;
     ImageButton account;
     ImageButton orders;
-    AlertDialog dialog;
     LinearLayout layout;
     String userID;
     List<StoreModel> stores;
@@ -77,7 +77,7 @@ public class Home_Customer extends AppCompatActivity {
             }
         });
     }
-    private void addCard(String store) {
+    private void addCard(String store, String id) {
         View view_2 = getLayoutInflater().inflate(R.layout.card2, null);
 
         TextView productView = view_2.findViewById(R.id.name);
@@ -86,8 +86,9 @@ public class Home_Customer extends AppCompatActivity {
         go_to_store.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(), StoreHome.class);
                 intent.putExtra("STORE_NAME", store);
+                intent.putExtra("STORE_ID", id);
                 startActivity(intent);
             }
         });
@@ -109,7 +110,7 @@ public class Home_Customer extends AppCompatActivity {
                 }
                 for(StoreModel i : stores)
                 {
-                    addCard(i.getStore_name());
+                    addCard(i.getStore_name(), i.getId());
                 }
                 Log.d("ProductList", "Loaded " + stores.size() + " products from Firebase");
             }

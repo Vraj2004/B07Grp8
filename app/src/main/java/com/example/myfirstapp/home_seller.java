@@ -49,7 +49,7 @@ public class home_seller extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_seller);
 
-        userID = FirebaseAuth.getInstance().getUid();
+        userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
         dbRef = FirebaseDatabase.getInstance().getReference();
         add = findViewById(R.id.add_button);
         layout = findViewById(R.id.container);
