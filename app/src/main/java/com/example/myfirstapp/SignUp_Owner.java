@@ -16,6 +16,8 @@ import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.myfirstapp.models.StoreModel;
+import com.example.myfirstapp.models.UserModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -35,8 +37,8 @@ import java.util.HashMap;
 
 public class SignUp_Owner extends AppCompatActivity {
 
-    DatabaseReference dbRef = FirebaseDatabase.getInstance().getReferenceFromUrl("https://b07-final-project-dbff5-default-rtdb.firebaseio.com/");
-
+    //DatabaseReference dbRef = FirebaseDatabase.getInstance().getReferenceFromUrl("https://b07-final-project-dbff5-default-rtdb.firebaseio.com/");
+    FirebaseDatabase db = FirebaseDatabase.getInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,31 +70,26 @@ public class SignUp_Owner extends AppCompatActivity {
                     Toast.makeText(SignUp_Owner.this, "Password does not match", Toast.LENGTH_SHORT).show();
                 }
 
-            fAuth.createUserWithEmailAndPassword(email, password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+            fAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
-                public void onSuccess(AuthResult authResult) {
-                    Toast.makeText(SignUp_Owner.this, "Account Created", Toast.LENGTH_SHORT).show();
-                    HashMap<String, Object> add = new HashMap<>();
-                    add.put("Username", username);
-                    add.put("Email", email);
-                    add.put("isOwner", 1);
-
-                    HashMap<String, Object> store = new HashMap<>();
-                    HashMap<String, Object> item = new HashMap<>();
-                    store.put("Store Name", storeName);
-                    store.put("Items", item);
-
-                    dbRef.child("Users").child(fAuth.getUid()).setValue(add);
-                    dbRef.child("Stores").child(fAuth.getUid()).setValue(store);
-                    startActivity(new Intent(getApplicationContext(), Login.class));
-                    finish();
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(SignUp_Owner.this, "Failed to Create Account!", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(getApplicationContext(), SignUp_Customer.class));
-                    finish();
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if(task.isSuccessful())
+                    {
+                        UserModel userModel = new UserModel(username, email, password, 1);
+                        StoreModel storeModel = new StoreModel(storeName);
+                        String id = fAuth.getUid();
+                        db.getReference().child("Users").child(id).setValue(userModel);
+                        db.getReference().child("Stores").child(id).setValue(storeModel);
+                        Toast.makeText(SignUp_Owner.this, "Account Created", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(getApplicationContext(), home_seller.class));
+                        finish();
+                    }
+                    else
+                    {
+                        Toast.makeText(SignUp_Owner.this, "Failed to create account!", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(getApplicationContext(), SignUp_Owner.class));
+                        finish();
+                    }
                 }
             });
         });

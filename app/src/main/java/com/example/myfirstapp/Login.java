@@ -31,7 +31,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class Login extends AppCompatActivity {
 
-    DatabaseReference dbRef = FirebaseDatabase.getInstance().getReferenceFromUrl("https://b07-final-project-dbff5-default-rtdb.firebaseio.com/");
+    FirebaseDatabase db = FirebaseDatabase.getInstance();
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,16 +57,34 @@ public class Login extends AppCompatActivity {
                 mAuth.signInWithEmailAndPassword(email, password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                     @Override
                     public void onSuccess(AuthResult authResult) {
-                            Toast.makeText(Login.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                            finish();
+                        Toast.makeText(Login.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                        String id = mAuth.getUid();
+                        DatabaseReference userRef = db.getReference().child("Users").child(id);
+                        userRef.child("isOwner").addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                if (dataSnapshot.exists() && dataSnapshot.getValue(Integer.class) == 1) {
+                                    startActivity(new Intent(getApplicationContext(), home_seller.class));
+                                    finish();
+                                } else {
+                                    startActivity(new Intent(getApplicationContext(), Home_Customer.class));
+                                    finish();
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+                                // Handle error case here
+                            }
+                        });
+
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(Login.this, "Failed to Login", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(), Login.class));
-                            finish();
+                        Toast.makeText(Login.this, "Failed to Login", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(getApplicationContext(), Login.class));
+                        finish();
                     }
                 });
             }
@@ -78,19 +96,3 @@ public class Login extends AppCompatActivity {
         });
     }
 }
-
-//mAuth.signInWithEmailAndPassword(email, password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-//@Override
-//public void onSuccess(AuthResult authResult) {
-//        Toast.makeText(Login.this, "Login Successful", Toast.LENGTH_SHORT).show();
-//        startActivity(new Intent(getApplicationContext(), Home_Customer.class));
-//        finish();
-//        }
-//        }).addOnFailureListener(new OnFailureListener() {
-//@Override
-//public void onFailure(@NonNull Exception e) {
-//        Toast.makeText(Login.this, "Failed to Login", Toast.LENGTH_SHORT).show();
-//        startActivity(new Intent(getApplicationContext(), Login.class));
-//        finish();
-//        }
-//        });
