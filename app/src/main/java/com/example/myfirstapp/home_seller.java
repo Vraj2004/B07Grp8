@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.myfirstapp.models.ItemModel;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -21,7 +22,11 @@ import com.google.firebase.database.FirebaseDatabase;
 public class home_seller extends AppCompatActivity {
 
     DatabaseReference dbRef;
+    FirebaseDatabase db = FirebaseDatabase.getInstance();
     Button add;
+    ImageButton home;
+    ImageButton account;
+    ImageButton orders;
     AlertDialog dialog;
     LinearLayout layout;
 
@@ -36,6 +41,9 @@ public class home_seller extends AppCompatActivity {
         dbRef = FirebaseDatabase.getInstance().getReference();
         add = findViewById(R.id.add_button);
         layout = findViewById(R.id.container);
+        home = findViewById(R.id.home_button);
+        orders = findViewById(R.id.orders_button);
+        account = findViewById(R.id.account_button);
 
         buildDialog();
         add.setOnClickListener(new View.OnClickListener() {
@@ -45,55 +53,21 @@ public class home_seller extends AppCompatActivity {
             }
         });
 
-        final ImageButton home_button = (ImageButton) findViewById(R.id.home_button);
-
-        home_button.setOnClickListener(new View.OnClickListener() {
-
+        home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                Intent i = new Intent(getApplicationContext(), home_customer.class);
-                startActivity(i);
-
+                Intent home_intent = new Intent(getApplicationContext(), home_seller.class);
+                startActivity(home_intent);
+                finish();
             }
         });
 
-        final ImageButton orders_button = (ImageButton) findViewById(R.id.orders_button);
-
-        orders_button.setOnClickListener(new View.OnClickListener() {
-
+        account.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                Intent i = new Intent(getApplicationContext(),item_cart.class);
-                startActivity(i);
-
-            }
-        });
-
-        final ImageButton my_orders_button = (ImageButton) findViewById(R.id.my_orders_button);
-
-        my_orders_button.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-
-                Intent i = new Intent(getApplicationContext(), MyOrders.class);
-                startActivity(i);
-
-            }
-        });
-
-        final ImageButton account_button = (ImageButton) findViewById(R.id.account_button);
-
-        account_button.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-
-                Intent i = new Intent(getApplicationContext(),Account.class);
-                startActivity(i);
-
+                Intent home_intent = new Intent(getApplicationContext(), Account.class);
+                startActivity(home_intent);
+                finish();
             }
         });
     }
@@ -112,8 +86,9 @@ public class home_seller extends AppCompatActivity {
                         String productName = product.getText().toString().trim();
                         if (!productName.isEmpty()) {
                             addCard(productName);
-                            String pId = dbRef.push().getKey();
-                            dbRef.child("Stores").child(userID).child("Items").child(productName).setValue(productName);
+                            ItemModel itemModel = new ItemModel(productName, "", "", "");
+                            db.getReference().child("Stores").child(userID).child("Items").child(productName).setValue(itemModel);
+                            //dbRef.child("Stores").child(userID).child("Items").setValue(productName);
                             product.setText("");
                         } else {
                             Toast.makeText(home_seller.this, "Product name cannot be empty.", Toast.LENGTH_SHORT).show();

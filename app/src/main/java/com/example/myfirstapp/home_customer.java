@@ -13,7 +13,7 @@ public class home_customer extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_customer);
 
-        final ImageButton home_button = (ImageButton) findViewById(R.id.home_button);
+        final ImageButton home_button = findViewById(R.id.home_button);
 
         home_button.setOnClickListener(new View.OnClickListener() {
 
@@ -26,7 +26,7 @@ public class home_customer extends AppCompatActivity {
             }
         });
 
-        final ImageButton cart_button = (ImageButton) findViewById(R.id.orders_button);
+        final ImageButton cart_button = findViewById(R.id.orders_button);
 
         cart_button.setOnClickListener(new View.OnClickListener() {
 
@@ -39,7 +39,7 @@ public class home_customer extends AppCompatActivity {
             }
         });
 
-        final ImageButton my_orders_button = (ImageButton) findViewById(R.id.my_orders_button);
+        final ImageButton my_orders_button = findViewById(R.id.my_orders_button);
 
         my_orders_button.setOnClickListener(new View.OnClickListener() {
 
@@ -52,7 +52,7 @@ public class home_customer extends AppCompatActivity {
             }
         });
 
-        final ImageButton account_button = (ImageButton) findViewById(R.id.account_button);
+        final ImageButton account_button = findViewById(R.id.account_button);
 
         account_button.setOnClickListener(new View.OnClickListener() {
 
