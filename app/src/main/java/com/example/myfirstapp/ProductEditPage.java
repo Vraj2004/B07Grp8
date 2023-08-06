@@ -136,7 +136,7 @@ public class ProductEditPage extends AppCompatActivity {
         Toast.makeText(this, "SAVED", Toast.LENGTH_SHORT).show();
     }
 
-    public void loadData(){
+    public void loadData() {
         SharedPreferences sharedPreferences = getSharedPreferences(SharedPrefs, MODE_PRIVATE);
         priceText = sharedPreferences.getString("Price", "Price: ");
         quantityText = sharedPreferences.getString("Quantity", "Quantity: ");
@@ -144,9 +144,10 @@ public class ProductEditPage extends AppCompatActivity {
 
     }
 
-    public void updateViews(){
+    public void updateViews() {
         price.setText(priceText);
         quantity.setText(quantityText);
         description.setText(descriptionText);
     }
+
 }
