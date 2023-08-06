@@ -11,8 +11,12 @@ import android.widget.EditText;
 import android.widget.Toast;
 import android.widget.TextView;
 
+import com.example.myfirstapp.models.StoreModel;
+import com.example.myfirstapp.models.UserModel;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -26,8 +30,9 @@ import com.google.firebase.database.core.ChildEventRegistration;
 import java.util.HashMap;
 
 public class SignUp_Customer extends AppCompatActivity {
-    DatabaseReference dbRef = FirebaseDatabase.getInstance().getReferenceFromUrl("https://b07-final-project-dbff5-default-rtdb.firebaseio.com/");
+    //DatabaseReference dbRef = FirebaseDatabase.getInstance().getReferenceFromUrl("https://b07-final-project-dbff5-default-rtdb.firebaseio.com/");
 
+    FirebaseDatabase db = FirebaseDatabase.getInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,26 +66,47 @@ public class SignUp_Customer extends AppCompatActivity {
                     return;
                 }
 
-                fAuth.createUserWithEmailAndPassword(email, password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                fAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
-                    public void onSuccess(AuthResult authResult) {
-                        Toast.makeText(SignUp_Customer.this, "Account Created", Toast.LENGTH_SHORT).show();
-                        HashMap<String, Object> add = new HashMap<>();
-                        add.put("Username", username);
-                        add.put("Email", email);
-                        add.put("isOwner", 0);
-                        dbRef.child("Users").push().setValue(add);
-                        startActivity(new Intent(getApplicationContext(), Login.class));
-                        finish();
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(SignUp_Customer.this, "Failed to Create Account!", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(getApplicationContext(), SignUp_Customer.class));
-                        finish();
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isSuccessful())
+                        {
+                            UserModel userModel = new UserModel(username, email, password, 0);
+                            String id = fAuth.getUid();
+                            db.getReference().child("Users").child(id).setValue(userModel);
+                            Toast.makeText(SignUp_Customer.this, "Account Created", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(getApplicationContext(), home_customer.class));
+                            finish();
+                        }
+                        else
+                        {
+                            Toast.makeText(SignUp_Customer.this, "Failed to create account!", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(getApplicationContext(), Login.class));
+                            finish();
+                        }
                     }
                 });
+
+//                fAuth.createUserWithEmailAndPassword(email, password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+//                    @Override
+//                    public void onSuccess(AuthResult authResult) {
+//                        Toast.makeText(SignUp_Customer.this, "Account Created", Toast.LENGTH_SHORT).show();
+//                        HashMap<String, Object> add = new HashMap<>();
+//                        add.put("Username", username);
+//                        add.put("Email", email);
+//                        add.put("isOwner", 0);
+//                        dbRef.child("Users").push().setValue(add);
+//                        startActivity(new Intent(getApplicationContext(), Login.class));
+//                        finish();
+//                    }
+//                }).addOnFailureListener(new OnFailureListener() {
+//                    @Override
+//                    public void onFailure(@NonNull Exception e) {
+//                        Toast.makeText(SignUp_Customer.this, "Failed to Create Account!", Toast.LENGTH_SHORT).show();
+//                        startActivity(new Intent(getApplicationContext(), SignUp_Customer.class));
+//                        finish();
+//                    }
+//                });
             }
 
         });
