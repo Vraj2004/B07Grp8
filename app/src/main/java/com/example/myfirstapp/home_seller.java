@@ -1,11 +1,13 @@
 package com.example.myfirstapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,18 +16,33 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.myfirstapp.models.ItemModel;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
+
 public class home_seller extends AppCompatActivity {
 
     DatabaseReference dbRef;
+    FirebaseDatabase db = FirebaseDatabase.getInstance();
     Button add;
+    ImageButton home;
+    ImageButton account;
+    ImageButton orders;
     AlertDialog dialog;
     LinearLayout layout;
-
     String userID;
+    List<ItemModel> items;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +53,11 @@ public class home_seller extends AppCompatActivity {
         dbRef = FirebaseDatabase.getInstance().getReference();
         add = findViewById(R.id.add_button);
         layout = findViewById(R.id.container);
-
+        home = findViewById(R.id.home_button);
+        orders = findViewById(R.id.orders_button);
+        account = findViewById(R.id.account_button);
+        items = new ArrayList<>();
+        loadItems();
         buildDialog();
         add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,56 +66,31 @@ public class home_seller extends AppCompatActivity {
             }
         });
 
-        final ImageButton home_button = (ImageButton) findViewById(R.id.home_button);
-
-        home_button.setOnClickListener(new View.OnClickListener() {
-
+        home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Intent i = new Intent(getApplicationContext(), home_seller.class);
                 startActivity(i);
-
+                finish();
             }
         });
 
-        final ImageButton orders_button = (ImageButton) findViewById(R.id.my_orders);
-
-        orders_button.setOnClickListener(new View.OnClickListener() {
-
+        orders.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 Intent i = new Intent(getApplicationContext(),item_cart.class);
                 startActivity(i);
-
+                finish();
             }
         });
-
-        /*final ImageButton my_orders_button = (ImageButton) findViewById(R.id.my_orders);
-
-        my_orders_button.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-
-                Intent i = new Intent(getApplicationContext(), MyOrders.class);
-                startActivity(i);
-
-            }
-        });
-         */
-
-        final ImageButton account_button = (ImageButton) findViewById(R.id.account_button);
-
-        account_button.setOnClickListener(new View.OnClickListener() {
-
+        account.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 Intent i = new Intent(getApplicationContext(),Account.class);
                 startActivity(i);
-
+                finish();
             }
         });
     }
@@ -113,8 +109,8 @@ public class home_seller extends AppCompatActivity {
                         String productName = product.getText().toString().trim();
                         if (!productName.isEmpty()) {
                             addCard(productName);
-                            String pId = dbRef.push().getKey();
-                            dbRef.child("Stores").child(userID).child("Items").child(productName).setValue(productName);
+                            ItemModel itemModel = new ItemModel(productName, "", "", "");
+                            db.getReference().child("Stores").child(userID).child("Items").child(productName).setValue(itemModel);
                             product.setText("");
                         } else {
                             Toast.makeText(home_seller.this, "Product name cannot be empty.", Toast.LENGTH_SHORT).show();
@@ -156,5 +152,42 @@ public class home_seller extends AppCompatActivity {
         });
 
         layout.addView(view_2);
+    }
+    private void loadItems() {
+        DatabaseReference itemsRef = dbRef.child("Stores").child(userID).child("Items");
+
+        itemsRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                items.clear();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    ItemModel item = snapshot.getValue(ItemModel.class);
+                    if (item != null) {
+                        items.add(item);
+                    }
+                }
+                for(ItemModel i : items)
+                {
+                    addCard(i.getName());
+                }
+                Log.d("ProductList", "Loaded " + items.size() + " products from Firebase");
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                System.err.println("Error loading products from Firebase: " + error.getMessage());
+            }
+        });
+//        itemsRef.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+//            @Override
+//            public void onComplete(@NonNull Task<DataSnapshot> task) {
+//                if (task.isSuccessful()) {
+//                    for (DataSnapshot itemSnapshot : task.getResult().getChildren()) {
+//                        String itemName = itemSnapshot.getKey();
+//                        addCard(itemName);
+//                    }
+//                }
+//            }
+//        }); /////
     }
 }
