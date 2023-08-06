@@ -1,4 +1,7 @@
 package com.example.myfirstapp;
 
-public class Account {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class Account extends AppCompatActivity {
+
 }

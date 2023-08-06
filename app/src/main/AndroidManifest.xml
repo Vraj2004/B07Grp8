@@ -16,6 +16,9 @@
         android:theme="@style/Theme.MyFirstApp"
         tools:targetApi="34">
         <activity
+            android:name=".checkoutPage"
+            android:exported="false" />
+        <activity
             android:name=".ProductEditPage"
             android:exported="false" />
         <activity

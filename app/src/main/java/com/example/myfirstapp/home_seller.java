@@ -52,13 +52,13 @@ public class home_seller extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent i = new Intent(getApplicationContext(), home_customer.class);
+                Intent i = new Intent(getApplicationContext(), home_seller.class);
                 startActivity(i);
 
             }
         });
 
-        final ImageButton orders_button = (ImageButton) findViewById(R.id.orders_button);
+        final ImageButton orders_button = (ImageButton) findViewById(R.id.my_orders);
 
         orders_button.setOnClickListener(new View.OnClickListener() {
 
@@ -71,7 +71,7 @@ public class home_seller extends AppCompatActivity {
             }
         });
 
-        final ImageButton my_orders_button = (ImageButton) findViewById(R.id.my_orders_button);
+        /*final ImageButton my_orders_button = (ImageButton) findViewById(R.id.my_orders);
 
         my_orders_button.setOnClickListener(new View.OnClickListener() {
 
@@ -83,6 +83,7 @@ public class home_seller extends AppCompatActivity {
 
             }
         });
+         */
 
         final ImageButton account_button = (ImageButton) findViewById(R.id.account_button);
 
