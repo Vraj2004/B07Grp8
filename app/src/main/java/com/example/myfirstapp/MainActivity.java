@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -14,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
     private Button signOut;
     FirebaseAuth mAuth;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         signOut = findViewById(R.id.signOut);
+        String productName = getIntent().getStringExtra("STORE_NAME");
+        Toast.makeText(this, productName, Toast.LENGTH_SHORT).show();
         signOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
