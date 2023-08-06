@@ -16,6 +16,12 @@
         android:theme="@style/Theme.MyFirstApp"
         tools:targetApi="34">
         <activity
+            android:name=".ItemPreview"
+            android:exported="false" />
+        <activity
+            android:name=".StoreHome"
+            android:exported="false" />
+        <activity
             android:name=".Home_Customer"
             android:exported="false" />
         <activity
