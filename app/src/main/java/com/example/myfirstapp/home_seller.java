@@ -58,10 +58,11 @@ public class home_seller extends AppCompatActivity {
         account = findViewById(R.id.account_button);
         items = new ArrayList<>();
         loadItems();
-        buildDialog();
+
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                buildDialog();
                 dialog.show();
             }
         });
@@ -178,16 +179,5 @@ public class home_seller extends AppCompatActivity {
                 System.err.println("Error loading products from Firebase: " + error.getMessage());
             }
         });
-//        itemsRef.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-//            @Override
-//            public void onComplete(@NonNull Task<DataSnapshot> task) {
-//                if (task.isSuccessful()) {
-//                    for (DataSnapshot itemSnapshot : task.getResult().getChildren()) {
-//                        String itemName = itemSnapshot.getKey();
-//                        addCard(itemName);
-//                    }
-//                }
-//            }
-//        }); /////
     }
 }
