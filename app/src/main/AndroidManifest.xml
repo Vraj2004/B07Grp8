@@ -25,6 +25,9 @@
             android:name=".WhoAreYouPage"
             android:exported="false" />
         <activity
+            android:name=".home_customer"
+            android:exported="false" />
+        <activity
             android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
