@@ -41,7 +41,7 @@ public class Account extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent i = new Intent(getApplicationContext(),item_cart.class);
+                Intent i = new Intent(getApplicationContext(),CartPage.class);
                 startActivity(i);
                 finish();
             }
