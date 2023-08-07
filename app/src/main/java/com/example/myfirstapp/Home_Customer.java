@@ -28,7 +28,6 @@ import java.util.List;
 public class Home_Customer extends AppCompatActivity {
 
     DatabaseReference dbRef;
-    FirebaseDatabase db = FirebaseDatabase.getInstance();
     ImageButton home;
     ImageButton account;
     ImageButton orders;
@@ -62,7 +61,7 @@ public class Home_Customer extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent i = new Intent(getApplicationContext(),item_cart.class);
+                Intent i = new Intent(getApplicationContext(),CartPage.class);
                 startActivity(i);
                 finish();
             }
