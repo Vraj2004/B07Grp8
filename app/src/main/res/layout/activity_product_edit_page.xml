@@ -7,17 +7,22 @@
     android:background="@drawable/gradient_background"
     tools:context=".ProductEditPage">
 
+
     <TextView
         android:id="@+id/product_name_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Product Name:"
-        android:textSize="40sp"
+        android:textStyle="bold"
         android:textColor="@color/white"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="138dp"
-        tools:layout_editor_absoluteY="149dp" />
-
+        android:textSize="40sp"
+        app:layout_constraintBottom_toBottomOf="@+id/save_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.234"
+        tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/price_label"
@@ -132,8 +137,12 @@
         android:background="?attr/selectableItemBackgroundBorderless"
         android:contentDescription="@string/back_button_description"
         android:src="@drawable/logo3"
-        tools:layout_editor_absoluteX="7dp"
-        tools:layout_editor_absoluteY="16dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.048"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.024" />
 
     <Button
         android:id="@+id/save_button"

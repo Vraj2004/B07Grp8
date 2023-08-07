@@ -53,7 +53,7 @@ public class Home_Customer extends AppCompatActivity {
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), home_seller.class);
+                Intent i = new Intent(getApplicationContext(), Home_Customer.class);
                 startActivity(i);
                 finish();
             }
@@ -71,7 +71,7 @@ public class Home_Customer extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent i = new Intent(getApplicationContext(),Account.class);
+                Intent i = new Intent(getApplicationContext(),AccountShopper.class);
                 startActivity(i);
                 finish();
             }
