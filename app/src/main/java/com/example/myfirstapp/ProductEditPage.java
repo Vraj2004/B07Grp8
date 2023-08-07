@@ -18,8 +18,10 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class ProductEditPage extends AppCompatActivity {
 
@@ -30,6 +32,8 @@ public class ProductEditPage extends AppCompatActivity {
     ImageButton backButton;
     DatabaseReference dbRef;
     String uId;
+
+    String newPrice, newQuantity, newDescription;
     public static final String SharedPrefs = "sharedPrefs";
 
 
@@ -63,7 +67,6 @@ public class ProductEditPage extends AppCompatActivity {
                     DataSnapshot dataSnapshot = task.getResult();
                     if (dataSnapshot.exists()) {
                         ItemModel itemModel = dataSnapshot.getValue(ItemModel.class);
-                        // Set the retrieved data to the TextViews
                         price.setText(itemModel.getPrice());
                         quantity.setText(itemModel.getQuantity());
                         description.setText(itemModel.getDescription());
@@ -83,24 +86,33 @@ public class ProductEditPage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                String newPrice = editPrice.getText().toString();
-                String newQuantity = editQuantity.getText().toString();
-                String newDescription = editDescription.getText().toString();
+                newPrice = editPrice.getText().toString();
+                newQuantity = editQuantity.getText().toString();
+                newDescription = editDescription.getText().toString();
 
                 // Check if any of the EditText fields are empty
                 if (!newPrice.isEmpty()) {
                     price.setText(newPrice);
                     priceText = newPrice;
+                } else {
+                    newPrice = "";
+                    priceText="";
                 }
 
                 if (!newQuantity.isEmpty()) {
                     quantity.setText(newQuantity);
                     quantityText = newQuantity;
+                } else {
+                    newQuantity = "";
+                    quantityText="";
                 }
 
                 if (!newDescription.isEmpty()) {
                     description.setText(newDescription);
                     descriptionText = newDescription;
+                } else {
+                    newDescription = "";
+                    descriptionText="";
                 }
 
                 // Save non-empty values to SharedPreferences
@@ -110,6 +122,7 @@ public class ProductEditPage extends AppCompatActivity {
 
                 ItemModel itemModel = new ItemModel(productName, priceText, quantityText, descriptionText);
                 dbRef.child("Stores").child(uId).child("Items").child(productName).setValue(itemModel);
+
                 finish();
             }
         });
