@@ -31,6 +31,8 @@ public class StoreHome extends AppCompatActivity {
     ImageButton home;
     ImageButton account;
     ImageButton orders;
+    ImageButton cart_button;
+
     String userID;
     ArrayList<ItemModel> products;
 
@@ -49,6 +51,7 @@ public class StoreHome extends AppCompatActivity {
         home = findViewById(R.id.home_button);
         orders = findViewById(R.id.orders_button);
         account = findViewById(R.id.account_button);
+        cart_button = findViewById(R.id.cart_button);
         products = new ArrayList<>();
         name = findViewById(R.id.store_name);
         dbRef = FirebaseDatabase.getInstance().getReference();
@@ -60,7 +63,7 @@ public class StoreHome extends AppCompatActivity {
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), home_seller.class);
+                Intent i = new Intent(getApplicationContext(), Home_Customer.class);
                 startActivity(i);
                 finish();
             }
@@ -69,9 +72,7 @@ public class StoreHome extends AppCompatActivity {
         orders.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                Intent i = new Intent(getApplicationContext(),CartPage.class);
-                getIntent().putExtra("STORE_ID", storeID);
+                Intent i = new Intent(getApplicationContext(),MyOrders.class);
                 startActivity(i);
                 finish();
             }
@@ -80,7 +81,15 @@ public class StoreHome extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent i = new Intent(getApplicationContext(),Account.class);
+                Intent i = new Intent(getApplicationContext(),AccountShopper.class);
+                startActivity(i);
+                finish();
+            }
+        });
+        cart_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(),CartPage.class);
                 startActivity(i);
                 finish();
             }

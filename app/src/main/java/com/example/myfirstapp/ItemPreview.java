@@ -30,7 +30,6 @@ public class ItemPreview extends AppCompatActivity {
 
         add_to_cart_button = findViewById(R.id.add_to_cart_button);
         priceText = findViewById(R.id.price_text);
-        quantityText = findViewById(R.id.quantity_text);
         descriptionText = findViewById(R.id.description_text);
         quantityEdit = findViewById(R.id.quantity_label);
         dbref = FirebaseDatabase.getInstance().getReference();
@@ -38,15 +37,14 @@ public class ItemPreview extends AppCompatActivity {
         productName = getIntent().getStringExtra("PRODUCT_NAME");
         storeName = getIntent().getStringExtra("STORE_NAME");
         productPrice = getIntent().getStringExtra("PRODUCT_PRICE");
-        productQuantity = getIntent().getStringExtra("PRODUCT_QUANTITY");
         storeId = getIntent().getStringExtra("STORE_ID");
 
         priceText.setText(productPrice);
-        quantityText.setText(productName);
 
         add_to_cart_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                productQuantity = quantityEdit.getText().toString();
                 add();
                 Intent i = new Intent(ItemPreview.this, Home_Customer.class);
                 startActivity(i);
