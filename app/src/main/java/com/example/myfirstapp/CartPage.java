@@ -28,7 +28,7 @@ public class CartPage extends AppCompatActivity {
     DatabaseReference dbRef;
     ImageButton home;
     ImageButton account;
-    ImageButton orders;
+    ImageButton order;
     LinearLayout layout;
     String userID;
     List<CartItem> cart;
@@ -42,14 +42,13 @@ public class CartPage extends AppCompatActivity {
         dbRef = FirebaseDatabase.getInstance().getReference();
         layout = findViewById(R.id.container);
         home = findViewById(R.id.home_button);
-        orders = findViewById(R.id.orders_button);
+        order = findViewById(R.id.orders_button);
         account = findViewById(R.id.account_button);
-        store_id = getIntent().getStringExtra("STORE_ID");
         cart = new ArrayList<>();
         loadProducts();
     }
 
-    private void addCard(String name, String quantity, String price) {
+    private void addCard(String name, String quantity, String price, String store_id) {
         View view_2 = getLayoutInflater().inflate(R.layout.cart_item, null);
 
         TextView productView = view_2.findViewById(R.id.product_name);
@@ -61,8 +60,21 @@ public class CartPage extends AppCompatActivity {
         Button delete = view_2.findViewById(R.id.delete_btn);
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-
+            public void onClick(View v) {
+                dbRef.child("Users").child(userID).child("Cart").child(store_id).child("Products").child(name)
+                        .removeValue(new DatabaseReference.CompletionListener() {
+                            @Override
+                            public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+                                if (databaseError == null) {
+                                    //Toast.makeText(home_seller.this, "Item removed!", Toast.LENGTH_SHORT).show();
+                                    dbRef.child("Users").child(userID).child("Cart").child(store_id).child("Products").child(name).removeValue();
+                                    layout.removeView(view_2);
+                                } else {
+                                    // An error occurred
+                                    Log.e("Firebase", "Error removing item: " + databaseError.getMessage());
+                                }
+                            }
+                        });
             }
         });
         layout.addView(view_2);
@@ -84,7 +96,7 @@ public class CartPage extends AppCompatActivity {
                 }
                 for(CartItem i : cart)
                 {
-                    addCard(i.getProduct_name(), i.getQuantity(), i.getPrice());
+                    addCard(i.getProduct_name(), i.getQuantity(), i.getPrice(), i.getStore_id());
                 }
                 Log.d("ProductList", "Loaded " + cart.size() + " products from Firebase");
             }

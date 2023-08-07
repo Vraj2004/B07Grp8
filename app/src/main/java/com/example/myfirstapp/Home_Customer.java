@@ -31,6 +31,7 @@ public class Home_Customer extends AppCompatActivity {
     ImageButton home;
     ImageButton account;
     ImageButton orders;
+    ImageButton cart;
     LinearLayout layout;
     String userID;
     List<StoreModel> stores;
@@ -45,6 +46,7 @@ public class Home_Customer extends AppCompatActivity {
         home = findViewById(R.id.home_button);
         orders = findViewById(R.id.orders_button);
         account = findViewById(R.id.account_button);
+        cart = findViewById(R.id.cart_button);
         stores = new ArrayList<>();
         loadStores();
 
@@ -70,6 +72,14 @@ public class Home_Customer extends AppCompatActivity {
             public void onClick(View view) {
 
                 Intent i = new Intent(getApplicationContext(),Account.class);
+                startActivity(i);
+                finish();
+            }
+        });
+        cart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(),CartPage.class);
                 startActivity(i);
                 finish();
             }

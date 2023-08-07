@@ -2,7 +2,7 @@ package com.example.myfirstapp.models;
 
 public class CartItem {
 
-    String store_name;
+    String store_id;
     String product_name;
     String quantity;
     String price;
@@ -11,19 +11,19 @@ public class CartItem {
     public CartItem() {
     }
 
-    public CartItem(String store_name, String product_name, String quantity, String amount) {
-        this.store_name = store_name;
+    public CartItem(String store_id, String product_name, String quantity, String amount) {
+        this.store_id = store_id;
         this.product_name = product_name;
         this.quantity = quantity;
         this.price = amount;
     }
 
-    public String getStore_name() {
-        return store_name;
+    public String getStore_id() {
+        return store_id;
     }
 
-    public void setStore_name(String store_name) {
-        this.store_name = store_name;
+    public void setStore_id(String store_id) {
+        this.store_id = store_id;
     }
 
     public String getProduct_name() {

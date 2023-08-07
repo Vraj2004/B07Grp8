@@ -56,7 +56,7 @@ public class ItemPreview extends AppCompatActivity {
     }
 
     private void add() {
-        CartItem item = new CartItem(storeName, productName, productQuantity, productPrice);
+        CartItem item = new CartItem(storeId, productName, productQuantity, productPrice);
         dbref.child("Users").child(uId).child("Cart").child(storeId).child("Products").child(productName).setValue(item);
     }
 }
