@@ -60,7 +60,6 @@ public class Home_Customer extends AppCompatActivity {
         orders.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Intent i = new Intent(getApplicationContext(),CartPage.class);
                 startActivity(i);
                 finish();
@@ -89,6 +88,7 @@ public class Home_Customer extends AppCompatActivity {
                 intent.putExtra("STORE_NAME", store);
                 intent.putExtra("STORE_ID", id);
                 startActivity(intent);
+                finish();
             }
         });
         layout.addView(view_2);

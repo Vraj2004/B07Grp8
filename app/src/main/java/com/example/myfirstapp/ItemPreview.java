@@ -48,8 +48,7 @@ public class ItemPreview extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 add();
-                Intent i = new Intent(ItemPreview.this, StoreHome.class);
-                getIntent().putExtra("STORE_ID", storeId);
+                Intent i = new Intent(ItemPreview.this, Home_Customer.class);
                 startActivity(i);
                 finish();
             }
