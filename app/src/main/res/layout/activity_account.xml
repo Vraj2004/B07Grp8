@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -10,7 +9,7 @@
     android:gravity="top"
     android:orientation="vertical"
     android:padding="15dp"
-    tools:context=".Login">
+    tools:context=".Account">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar5"
@@ -155,7 +154,7 @@
         android:layout_marginTop="2dp"
         android:background="#68606060"
         android:backgroundTint="#68606060"
-        android:text="username"
+        android:text=""
         android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@+id/username_text"
@@ -168,7 +167,7 @@
         android:layout_marginTop="2dp"
         android:background="#68606060"
         android:backgroundTint="#68606060"
-        android:text="email"
+        android:text=""
         android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@+id/email_text"
@@ -180,7 +179,7 @@
         android:layout_height="wrap_content"
         android:background="#68606060"
         android:backgroundTint="#68606060"
-        android:text="password"
+        android:text=""
         android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@+id/email_text"

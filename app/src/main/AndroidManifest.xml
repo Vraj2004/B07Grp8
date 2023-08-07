@@ -19,6 +19,9 @@
             android:name=".CartPage"
             android:exported="false" />
         <activity
+            android:name=".Account"
+            android:exported="false" />
+        <activity
             android:name=".ItemPreview"
             android:exported="false" />
         <activity

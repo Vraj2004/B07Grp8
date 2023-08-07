@@ -58,8 +58,6 @@ public class Account extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         signOut = findViewById(R.id.signout_button);
-        String productName = getIntent().getStringExtra("STORE_NAME");
-        Toast.makeText(this, productName, Toast.LENGTH_SHORT).show();
         signOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
