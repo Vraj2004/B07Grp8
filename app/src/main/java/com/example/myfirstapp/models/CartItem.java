@@ -5,7 +5,8 @@ public class CartItem {
     String store_name;
     String product_name;
     String quantity;
-    String amount;
+    String price;
+
 
     public CartItem() {
     }
@@ -14,7 +15,7 @@ public class CartItem {
         this.store_name = store_name;
         this.product_name = product_name;
         this.quantity = quantity;
-        this.amount = amount;
+        this.price = amount;
     }
 
     public String getStore_name() {
@@ -41,12 +42,12 @@ public class CartItem {
         this.quantity = quantity;
     }
 
-    public String getAmount() {
-        return amount;
+    public String getPrice() {
+        return price;
     }
 
-    public void setAmount(String amount) {
-        this.amount = amount;
+    public void setPrice(String amount) {
+        this.price = amount;
     }
 
 

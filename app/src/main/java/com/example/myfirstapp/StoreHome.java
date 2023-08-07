@@ -55,7 +55,6 @@ public class StoreHome extends AppCompatActivity {
         layout = findViewById(R.id.container);
 
         name.setText(storeName);
-        Toast.makeText(this, storeID, Toast.LENGTH_SHORT).show();
         loadProducts();
 
         home.setOnClickListener(new View.OnClickListener() {
@@ -71,7 +70,8 @@ public class StoreHome extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent i = new Intent(getApplicationContext(),item_cart.class);
+                Intent i = new Intent(getApplicationContext(),CartPage.class);
+                getIntent().putExtra("STORE_ID", storeID);
                 startActivity(i);
                 finish();
             }
@@ -88,7 +88,7 @@ public class StoreHome extends AppCompatActivity {
 
     }
 
-    private void addCard(String item, String price) {
+    private void addCard(String item, String price, String quantity) {
         View view_2 = getLayoutInflater().inflate(R.layout.product_card, null);
 
         TextView productView = view_2.findViewById(R.id.product_name);
@@ -104,6 +104,8 @@ public class StoreHome extends AppCompatActivity {
                 intent.putExtra("STORE_NAME", storeName);
                 intent.putExtra("PRODUCT_NAME", item);
                 intent.putExtra("PRODUCT_PRICE", price);
+                intent.putExtra("STORE_ID", storeID);
+                intent.putExtra("PRODUCT_QUANTITY", quantity);
                 startActivity(intent);
             }
         });
@@ -125,7 +127,7 @@ public class StoreHome extends AppCompatActivity {
                 }
                 for(ItemModel i : products)
                 {
-                    addCard(i.getName(), i.getPrice());
+                    addCard(i.getName(), i.getPrice(), i.getQuantity());
                 }
                 Log.d("ProductList", "Loaded " + products.size() + " products from Firebase");
             }
