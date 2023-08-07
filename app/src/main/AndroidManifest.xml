@@ -16,6 +16,9 @@
         android:theme="@style/Theme.MyFirstApp"
         tools:targetApi="34">
         <activity
+            android:name=".CartPage"
+            android:exported="false" />
+        <activity
             android:name=".ItemPreview"
             android:exported="false" />
         <activity
