@@ -156,5 +156,18 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.976" />
 
+    <TextView
+        android:id="@+id/warning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="* Please enter in all 3 fields to save *"
+        android:textColor="@color/white"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.893" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

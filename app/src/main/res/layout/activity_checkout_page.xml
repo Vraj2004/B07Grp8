@@ -67,31 +67,10 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.114"
+        app:layout_constraintHorizontal_bias="0.157"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.195" />
-
-    <EditText
-        android:id="@+id/emailAddress"
-        android:layout_width="350dp"
-        android:layout_height="50dp"
-        android:background="@drawable/rounded_buttons"
-        android:drawablePadding="12dp"
-        android:ems="10"
-        android:hint="Email Address"
-        android:inputType="text"
-        android:paddingStart="10dp"
-        android:paddingEnd="10dp"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.622"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.324" />
 
     <EditText
         android:id="@+id/address"
@@ -112,7 +91,7 @@
         app:layout_constraintHorizontal_bias="0.622"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.431" />
+        app:layout_constraintVertical_bias="0.315" />
 
     <EditText
         android:id="@+id/lastName"
@@ -151,10 +130,11 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.622"
+        app:layout_constraintHorizontal_bias="0.672"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.559" />
+        app:layout_constraintVertical_bias="0.433" />
+
 
     <TextView
         android:id="@+id/paymentMethod"
@@ -166,10 +146,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.651" />
-
+        app:layout_constraintVertical_bias="0.526" />
 
     <EditText
         android:id="@+id/cardInfo"
@@ -188,10 +168,10 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.622"
+        app:layout_constraintHorizontal_bias="0.672"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.741" />
+        app:layout_constraintVertical_bias="0.604" />
 
     <EditText
         android:id="@+id/csv"
@@ -209,10 +189,10 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.145"
+        app:layout_constraintHorizontal_bias="0.157"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.864" />
+        app:layout_constraintVertical_bias="0.719" />
 
     <EditText
         android:id="@+id/expiryDate"
@@ -230,10 +210,10 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.873"
+        app:layout_constraintHorizontal_bias="0.911"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.864" />
+        app:layout_constraintVertical_bias="0.719" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -243,7 +223,7 @@
         android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.119"
+        app:layout_constraintHorizontal_bias="0.111"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.958" />
