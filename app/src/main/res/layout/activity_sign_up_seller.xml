@@ -60,19 +60,6 @@
         android:hint="@string/category" /-->
 
     <EditText
-        android:id="@+id/Category"
-        android:layout_width="260dp"
-        android:layout_height="50dp"
-        android:background="@drawable/rounded_buttons"
-        android:textColor="@color/white"
-        android:textSize="17sp"
-        android:paddingLeft="12sp"
-        android:textColorHint="@color/white"
-        android:layout_marginBottom="20dp"
-        android:singleLine="true"
-        android:hint="@string/category" />
-
-    <EditText
         android:id="@+id/owner_email"
         android:layout_width="260dp"
         android:layout_height="50dp"
