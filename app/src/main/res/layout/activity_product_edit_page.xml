@@ -4,9 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProductEditPage"
-    android:background="@drawable/gradient_background">
-
+    android:background="@drawable/gradient_background"
+    tools:context=".ProductEditPage">
 
     <TextView
         android:id="@+id/product_name_label"
@@ -15,13 +14,9 @@
         android:text="Product Name:"
         android:textSize="40sp"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.211"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="138dp"
+        tools:layout_editor_absoluteY="149dp" />
 
 
     <EditText
@@ -137,12 +132,8 @@
         android:background="?attr/selectableItemBackgroundBorderless"
         android:contentDescription="@string/back_button_description"
         android:src="@drawable/logo3"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.021"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.024" />
+        tools:layout_editor_absoluteX="7dp"
+        tools:layout_editor_absoluteY="16dp" />
 
     <Button
         android:id="@+id/save_button"
