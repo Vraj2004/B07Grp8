@@ -21,14 +21,18 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.database.annotations.Nullable;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 
 public class home_seller extends AppCompatActivity {
@@ -42,7 +46,7 @@ public class home_seller extends AppCompatActivity {
     AlertDialog dialog;
     LinearLayout layout;
     String userID;
-    List<ItemModel> items;
+    HashSet<ItemModel> items;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,12 +60,13 @@ public class home_seller extends AppCompatActivity {
         home = findViewById(R.id.home_button);
         orders = findViewById(R.id.orders_button);
         account = findViewById(R.id.account_button);
-        items = new ArrayList<>();
+        items = new HashSet<>();
         loadItems();
 
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                System.out.println("ADD BUTTON CLICKED");
                 buildDialog();
                 dialog.show();
             }
@@ -97,6 +102,7 @@ public class home_seller extends AppCompatActivity {
     }
 
     private void buildDialog() {
+        System.out.println("BUILD DIOLOG HERE");
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         View view = getLayoutInflater().inflate(R.layout.dialog, null);
 
@@ -109,7 +115,6 @@ public class home_seller extends AppCompatActivity {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         String productName = product.getText().toString().trim();
                         if (!productName.isEmpty()) {
-                            addCard(productName);
                             ItemModel itemModel = new ItemModel(productName, "", "", "");
                             db.getReference().child("Stores").child(userID).child("Items").child(productName).setValue(itemModel);
                             product.setText("");
@@ -128,56 +133,114 @@ public class home_seller extends AppCompatActivity {
         dialog = builder.create();
     }
 
-    private void addCard(String product) {
-        View view_2 = getLayoutInflater().inflate(R.layout.card, null);
+    public void addCard(ItemModel item) {
+        String product = item.getName();
+        String price = item.getPrice();
+        String quantity = item.getQuantity();
+        String description = item.getDescription();
 
+        View view_2 = getLayoutInflater().inflate(R.layout.card, null);
         TextView productView = view_2.findViewById(R.id.name);
         Button delete = view_2.findViewById(R.id.delete_button);
         Button edit = view_2.findViewById(R.id.edit_button);
-
         productView.setText(product);
+        layout.addView(view_2);
+        System.out.println("ADDING CARD FOR " + item.getName());
 
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), ProductEditPage.class);
                 intent.putExtra("PRODUCT_NAME", product);
+//                intent.putExtra("PRODUCT_PRICE", price);
+//                intent.putExtra("PRODUCT_QUANTITY", quantity);
+//                intent.putExtra("PRODUCT_DESCRIPTION", description);
                 startActivity(intent);
             }
         });
+
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
-                layout.removeView(view_2);
+            public void onClick(View v) {
+                dbRef.child("Stores").child(userID).child("Items").child(product)
+                        .removeValue(new DatabaseReference.CompletionListener() {
+                            @Override
+                            public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+                                if (databaseError == null) {
+                                    //Toast.makeText(home_seller.this, "Item removed!", Toast.LENGTH_SHORT).show();
+                                    dbRef.child("Stores").child(userID).child("Items").child(product).removeValue();
+                                    layout.removeView(view_2);
+                                    System.out.println("removed" + product + " from db and view");
+                                } else {
+                                    // An error occurred
+                                    Log.e("Firebase", "Error removing item: " + databaseError.getMessage());
+                                }
+                            }
+                        });
             }
         });
 
-        layout.addView(view_2);
     }
     private void loadItems() {
         DatabaseReference itemsRef = dbRef.child("Stores").child(userID).child("Items");
+        System.out.println("LOADED DB STUFF");
 
-        itemsRef.addValueEventListener(new ValueEventListener() {
+        itemsRef.addChildEventListener(new ChildEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                items.clear();
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    ItemModel item = snapshot.getValue(ItemModel.class);
-                    if (item != null) {
-                        items.add(item);
-                    }
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String previousChildName) {
+                ItemModel item = dataSnapshot.getValue(ItemModel.class);
+                if (item != null) {
+                    items.add(item);
+                    System.out.println("ADDED " + item.getName() + " to list");
+                    addCard(item);
                 }
-                for(ItemModel i : items)
-                {
-                    addCard(i.getName());
-                }
-                Log.d("ProductList", "Loaded " + items.size() + " products from Firebase");
             }
 
             @Override
-            public void onCancelled(DatabaseError error) {
-                System.err.println("Error loading products from Firebase: " + error.getMessage());
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String previousChildName) {
+                // Handle changes to existing items if needed
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+                // Handle item removal if needed
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String previousChildName) {
+                // Handle item reordering if needed
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                System.err.println("Error loading products from Firebase: " + databaseError.getMessage());
             }
         });
     }
+
+//    private void loadItems() {
+//        DatabaseReference itemsRef = dbRef.child("Stores").child(userID).child("Items");
+//        System.out.println("LOADED DB STUFF");
+//
+//        itemsRef.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+//                    ItemModel item = snapshot.getValue(ItemModel.class);
+//                        items.add(item);
+//                        System.out.println("ADDED " + item.getName() + "to list");
+//                }
+//                for(ItemModel i : items)
+//                {
+//                    addCard(i);
+//                }
+////                Log.d("ProductList", "Loaded " + items.size() + " products from Firebase");
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError error) {
+//                System.err.println("Error loading products from Firebase: " + error.getMessage());
+//            }
+//        });
+//    }
 }
