@@ -1,5 +1,6 @@
 package com.example.myfirstapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -13,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.myfirstapp.models.CartItem;
+import com.example.myfirstapp.models.OrderModel;
 import com.example.myfirstapp.models.StoreModel;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -37,6 +39,8 @@ public class CartPage extends AppCompatActivity {
     String userID;
     List<CartItem> cart;
     String store_id;
+    List<String> store_ids;
+    List<CartItem> currentList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,12 +55,17 @@ public class CartPage extends AppCompatActivity {
         account = findViewById(R.id.account_button);
         cart_button = findViewById(R.id.cart_button);
         cart = new ArrayList<>();
+        store_ids = new ArrayList<>();
+        currentList = new ArrayList<>();
         loadProducts();
 
         makeOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                makeOrderFunc();
+                Intent intent = new Intent(CartPage.this, checkoutPage.class);
+                intent.putStringArrayListExtra("STORE_IDS", (ArrayList<String>) store_ids);
+                startActivity(intent);
+                finish();
             }
         });
 
@@ -96,35 +105,6 @@ public class CartPage extends AppCompatActivity {
         });
     }
 
-    private void makeOrderFunc()
-    {
-        String orderId = UUID.randomUUID().toString().replaceAll("-", "").toUpperCase();
-        dbRef.child("Users").child(userID).child("Cart").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                cart.clear();
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    for (DataSnapshot child : snapshot.child("Products").getChildren()) {
-                        CartItem product = child.getValue(CartItem.class);
-                        if (product != null) {
-                            cart.add(product);
-                        }
-                    }
-
-                }
-                for(CartItem i : cart)
-                {
-                    addCard(i.getProduct_name(), i.getQuantity(), i.getPrice(), i.getStore_name());
-                }
-                Log.d("ProductList", "Loaded " + cart.size() + " products from Firebase");
-            }
-
-            @Override
-            public void onCancelled(DatabaseError error) {
-                System.err.println("Error loading products from Firebase: " + error.getMessage());
-            }
-        });
-    }
     private void addCard(String name, String quantity, String price, String store_id) {
         View view_2 = getLayoutInflater().inflate(R.layout.cart_item, null);
 
@@ -175,6 +155,7 @@ public class CartPage extends AppCompatActivity {
                 for(CartItem i : cart)
                 {
                     addCard(i.getProduct_name(), i.getQuantity(), i.getPrice(), i.getStore_name());
+                    store_ids.add(i.getStore_name());
                 }
                 Log.d("ProductList", "Loaded " + cart.size() + " products from Firebase");
             }

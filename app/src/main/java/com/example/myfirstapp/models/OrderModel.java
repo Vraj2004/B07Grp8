@@ -1,15 +1,17 @@
 package com.example.myfirstapp.models;
 
+import java.util.List;
+
 public class OrderModel {
     String orderID;
     String status;
     String userID;
-    String products;
+    List<CartItem> products;
 
     public OrderModel() {
     }
 
-    public OrderModel(String orderID, String status, String userID, String products) {
+    public OrderModel(String orderID, String status, String userID, List<CartItem> products) {
         this.orderID = orderID;
         this.status = status;
         this.userID = userID;
@@ -40,11 +42,11 @@ public class OrderModel {
         this.userID = userID;
     }
 
-    public String getProducts() {
+    public List<CartItem> getProducts() {
         return products;
     }
 
-    public void setProducts(String products) {
+    public void setProducts(List<CartItem> products) {
         this.products = products;
     }
 }
