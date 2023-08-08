@@ -65,7 +65,7 @@ public class OrderChange extends AppCompatActivity {
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), Home_Customer.class);
+                Intent i = new Intent(getApplicationContext(), home_seller.class);
                 startActivity(i);
                 finish();
             }
@@ -74,7 +74,7 @@ public class OrderChange extends AppCompatActivity {
         orders.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), OrdersCustomer.class);
+                Intent i = new Intent(getApplicationContext(), OrdersOwner.class);
                 startActivity(i);
                 finish();
             }
@@ -83,7 +83,7 @@ public class OrderChange extends AppCompatActivity {
         account.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), AccountShopper.class);
+                Intent i = new Intent(getApplicationContext(), Account.class);
                 startActivity(i);
                 finish();
             }
