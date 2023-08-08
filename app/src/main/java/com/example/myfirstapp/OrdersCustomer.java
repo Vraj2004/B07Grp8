@@ -11,7 +11,6 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.myfirstapp.models.StoreModel;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -95,7 +94,7 @@ public class OrdersCustomer extends AppCompatActivity {
         go_to_store.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), StoreHome.class);
+                Intent intent = new Intent(getApplicationContext(), OrderView.class);
                 intent.putExtra("ORDER_ID", order);
                 startActivity(intent);
                 finish();
@@ -112,9 +111,9 @@ public class OrdersCustomer extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    String store = snapshot.getValue(String.class);
-                    if (store != null) {
-                        stores.add(store);
+                    String order = snapshot.getValue(String.class);
+                    if (order != null) {
+                        stores.add(order);
                     }
                 }
                 for(String i : stores)

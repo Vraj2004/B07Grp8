@@ -85,7 +85,7 @@ public class OrdersOwner extends AppCompatActivity {
         go_to_store.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), StoreHome.class);
+                Intent intent = new Intent(getApplicationContext(), OrderChange.class);
                 intent.putExtra("ORDER_ID", order);
                 startActivity(intent);
                 finish();
