@@ -89,6 +89,7 @@
 
     </androidx.appcompat.widget.Toolbar>
 
+
     <TextView
         android:id="@+id/account_text"
         android:layout_width="wrap_content"
@@ -100,19 +101,31 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.521"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar5"
-        app:layout_constraintVertical_bias="0.019" />
+        app:layout_constraintVertical_bias="0.022" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/account_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/account_text"
+        app:layout_constraintHorizontal_bias="0.956"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.123" />
 
     <TextView
         android:id="@+id/username_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="44dp"
         android:layout_marginTop="64dp"
         android:text="@string/username"
-        android:textColor="@color/white"
-        android:textSize="14sp"
+        android:textColor="#000000"
+        android:textSize="25dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/username_content"
         app:layout_constraintStart_toStartOf="parent"
@@ -125,13 +138,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/email"
-        android:textColor="@color/white"
-        android:textSize="14sp"
+        android:textColor="#000000"
+        android:textSize="25dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/username_text"
         app:layout_constraintTop_toBottomOf="@+id/username_content"
-        app:layout_constraintVertical_bias="0.024" />
+        app:layout_constraintVertical_bias="0.09" />
 
     <TextView
         android:id="@+id/password_text"
@@ -139,13 +152,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/password"
-        android:textColor="@color/white"
-        android:textSize="14sp"
+        android:textColor="#000000"
+        android:textSize="25dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/username_text"
         app:layout_constraintTop_toBottomOf="@+id/email_content"
-        app:layout_constraintVertical_bias="0.024" />
+        app:layout_constraintVertical_bias="0.123" />
 
     <TextView
         android:id="@+id/username_content"
@@ -154,9 +167,9 @@
         android:layout_marginTop="2dp"
         android:background="#68606060"
         android:backgroundTint="#68606060"
-        android:text=""
+        android:text=" "
         android:textColor="@color/white"
-        android:textSize="20sp"
+        android:textSize="20dp"
         app:layout_constraintStart_toStartOf="@+id/username_text"
         app:layout_constraintTop_toBottomOf="@+id/username_text" />
 
@@ -167,9 +180,9 @@
         android:layout_marginTop="2dp"
         android:background="#68606060"
         android:backgroundTint="#68606060"
-        android:text=""
+        android:text=" "
         android:textColor="@color/white"
-        android:textSize="20sp"
+        android:textSize="20dp"
         app:layout_constraintStart_toStartOf="@+id/email_text"
         app:layout_constraintTop_toBottomOf="@+id/email_text" />
 
@@ -179,14 +192,14 @@
         android:layout_height="wrap_content"
         android:background="#68606060"
         android:backgroundTint="#68606060"
-        android:text=""
+        android:text=" "
         android:textColor="@color/white"
-        android:textSize="20sp"
+        android:textSize="20dp"
         app:layout_constraintStart_toStartOf="@+id/email_text"
         app:layout_constraintTop_toBottomOf="@+id/password_text" />
 
     <Button
-        android:id="@+id/signout_button"
+        android:id="@+id/signOut_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="64dp"
@@ -198,5 +211,42 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_username_icon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/username_text"
+        app:layout_constraintHorizontal_bias="0.894"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.281" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/baseline_email_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/email_text"
+        app:layout_constraintHorizontal_bias="0.906"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:layout_constraintVertical_bias="0.198" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="256dp"
+        android:background="@drawable/baseline_password_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/password_text"
+        app:layout_constraintHorizontal_bias="0.918"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3"
+        app:layout_constraintVertical_bias="1.0" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -27,7 +27,7 @@
                     android:text="Order"
                     android:textColor="@color/endColor"
                     android:textFontWeight="1000"
-                    android:textSize="12sp" />
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/status"
@@ -41,12 +41,14 @@
 
                 <Button
                     android:id="@+id/edit"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="259dp"
+                    android:layout_width="50dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="271dp"
+                    android:layout_toEndOf="@+id/name"
                     android:background="@color/endColor"
                     android:text="Edit"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textSize="10sp" />
 
 
             </RelativeLayout>

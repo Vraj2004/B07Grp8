@@ -12,7 +12,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.TextView;
 
 import com.example.myfirstapp.models.CartItem;
 import com.google.firebase.auth.FirebaseAuth;
@@ -38,8 +37,6 @@ public class checkoutPage extends AppCompatActivity {
     DatabaseReference dbRef;
     String userID;
     List<String> store_ids;
-    String total;
-    TextView totalText;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -54,8 +51,6 @@ public class checkoutPage extends AppCompatActivity {
         dbRef = FirebaseDatabase.getInstance().getReference();
         userID = FirebaseAuth.getInstance().getUid();
         store_ids = getIntent().getStringArrayListExtra("STORE_IDS");
-        total = "";
-        totalText = findViewById(R.id.textView3);
 
         home.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,8 +90,6 @@ public class checkoutPage extends AppCompatActivity {
             }
         });
 
-        showTotal();
-
         order = findViewById(R.id.finalOrderButton);
 
         order.setOnClickListener(view -> {
@@ -123,32 +116,6 @@ public class checkoutPage extends AppCompatActivity {
         creditCardNumber.addTextChangedListener(textWatcher);
         csv.addTextChangedListener(textWatcher);
         expiryDate.addTextChangedListener(textWatcher);
-
-    }
-
-    private void showTotal() {
-
-        dbRef.child("Users").child(userID).child("Cart").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                int tempTotal = 0;
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    DataSnapshot products = snapshot.child("Products");
-                    for (DataSnapshot product : products.getChildren()) {
-                        int price = Integer.parseInt(product.child("price").getValue().toString());
-                        int quantity = Integer.parseInt(product.child("quantity").getValue().toString());
-                        tempTotal += price * quantity;
-                    }
-                }
-                total = String.valueOf(tempTotal);
-                totalText.setText(total);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError error) {
-                System.err.println("Error loading products from Firebase: " + error.getMessage());
-            }
-        });
 
     }
 

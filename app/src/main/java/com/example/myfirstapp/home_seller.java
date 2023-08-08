@@ -102,7 +102,7 @@ public class home_seller extends AppCompatActivity {
     }
 
     private void buildDialog() {
-        System.out.println("BUILD DIOLOG HERE");
+        System.out.println("BUILD DIALOG HERE");
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         View view = getLayoutInflater().inflate(R.layout.dialog, null);
 
