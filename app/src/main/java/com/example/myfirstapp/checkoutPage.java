@@ -21,7 +21,7 @@ public class checkoutPage extends AppCompatActivity {
     EditText postalCode, creditCardNumber, csv, expiryDate;
     ImageButton home;
     ImageButton account;
-    ImageButton orders;
+    ImageButton orders, cart;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -32,11 +32,12 @@ public class checkoutPage extends AppCompatActivity {
         home = findViewById(R.id.home_button);
         orders = findViewById(R.id.orders_button);
         account = findViewById(R.id.account_button);
+        cart = findViewById(R.id.cart_button);
 
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), home_seller.class);
+                Intent i = new Intent(getApplicationContext(), Home_Customer.class);
                 startActivity(i);
                 finish();
             }
@@ -46,7 +47,7 @@ public class checkoutPage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent i = new Intent(getApplicationContext(),CartPage.class);
+                Intent i = new Intent(getApplicationContext(),MyOrders.class);
                 startActivity(i);
                 finish();
             }
@@ -55,7 +56,17 @@ public class checkoutPage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent i = new Intent(getApplicationContext(),Account.class);
+                Intent i = new Intent(getApplicationContext(),AccountShopper.class);
+                startActivity(i);
+                finish();
+            }
+        });
+
+        cart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent i = new Intent(getApplicationContext(),CartPage.class);
                 startActivity(i);
                 finish();
             }

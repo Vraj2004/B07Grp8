@@ -49,16 +49,6 @@ public class AccountShopper extends AppCompatActivity {
             }
         });
 
-        orders.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent i = new Intent(getApplicationContext(),MyOrders.class);
-                startActivity(i);
-                finish();
-            }
-        });
-
         cart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -72,7 +62,7 @@ public class AccountShopper extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent i = new Intent(getApplicationContext(), Account.class);
+                Intent i = new Intent(getApplicationContext(), AccountShopper.class);
                 startActivity(i);
                 finish();
             }
