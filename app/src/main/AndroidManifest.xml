@@ -16,6 +16,12 @@
         android:theme="@style/Theme.MyFirstApp"
         tools:targetApi="34">
         <activity
+            android:name=".OrderChange"
+            android:exported="false" />
+        <activity
+            android:name=".OrderView"
+            android:exported="false" />
+        <activity
             android:name=".OrdersCustomer"
             android:exported="false" />
         <activity
