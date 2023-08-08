@@ -85,7 +85,7 @@ public class home_seller extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent i = new Intent(getApplicationContext(),MyOrders.class);
+                Intent i = new Intent(getApplicationContext(),OrdersOwner.class);
                 startActivity(i);
                 finish();
             }

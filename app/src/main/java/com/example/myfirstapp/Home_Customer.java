@@ -62,7 +62,7 @@ public class Home_Customer extends AppCompatActivity {
         orders.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(),MyOrders.class);
+                Intent i = new Intent(getApplicationContext(),OrdersCustomer.class);
                 startActivity(i);
                 finish();
             }
