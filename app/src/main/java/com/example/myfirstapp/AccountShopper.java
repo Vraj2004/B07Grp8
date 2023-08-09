@@ -87,7 +87,7 @@ public class AccountShopper extends AppCompatActivity {
         });
 
 
-        signOut = findViewById(R.id.signout_button);
+        signOut = findViewById(R.id.signOut_button);
         signOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

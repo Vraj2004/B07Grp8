@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -74,7 +73,7 @@ public class Account extends AppCompatActivity {
             }
         });
 
-        signOut = findViewById(R.id.signout_button);
+        signOut = findViewById(R.id.signOut_button);
         signOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
