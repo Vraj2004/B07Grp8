@@ -35,9 +35,9 @@ public class OrdersOwner extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_orders_owner);
 
-        home = findViewById(R.id.homeButton);
-        orders = findViewById(R.id.ordersButton);
-        account = findViewById(R.id.accountButton);
+        home = findViewById(R.id.home_button);
+        orders = findViewById(R.id.orders_button);
+        account = findViewById(R.id.account_button);
 
         dbRef = FirebaseDatabase.getInstance().getReference();
         layout = findViewById(R.id.container);

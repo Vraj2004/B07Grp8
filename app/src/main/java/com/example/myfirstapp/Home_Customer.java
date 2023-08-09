@@ -35,7 +35,7 @@ public class Home_Customer extends AppCompatActivity {
     LinearLayout layout;
     String userID;
     List<StoreModel> stores;
-
+    TextView hello;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +48,10 @@ public class Home_Customer extends AppCompatActivity {
         account = findViewById(R.id.account_button);
         cart = findViewById(R.id.cart_button);
         stores = new ArrayList<>();
+        hello = findViewById(R.id.hello_there);
+
+
+
         loadStores();
 
         home.setOnClickListener(new View.OnClickListener() {

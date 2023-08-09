@@ -33,15 +33,16 @@ public class OrderChange extends AppCompatActivity {
     String orderID;
     String status;
     TextView stat;
+    TextView order;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_change);
 
-        home = findViewById(R.id.homeButton);
-        orders = findViewById(R.id.ordersButton);
-        account = findViewById(R.id.accountButton);
+        home = findViewById(R.id.home_button);
+        orders = findViewById(R.id.orders_button);
+        account = findViewById(R.id.account_button);
         change = findViewById(R.id.change_status);
 
         dbRef = FirebaseDatabase.getInstance().getReference();
@@ -51,6 +52,8 @@ public class OrderChange extends AppCompatActivity {
         orderID = getIntent().getStringExtra("ORDER_ID");
         status = null;
         stat = findViewById(R.id.status_text);
+        order = findViewById(R.id.order_id);
+        order.setText(orderID);
 
         loadStores();
 
