@@ -7,9 +7,6 @@
         android:radius="20dp" />
     <solid android:color="#40ffffff" />
     <!--  stroke for defining a border for view -->
-    <stroke android:color="@color/black"
-        android:width="2dp"
-        />
     <size
         android:height="40dp"
         android:width="40dp" />
