@@ -15,6 +15,7 @@
         android:id="@+id/store_name"
         android:textSize="30sp"
         android:textColor="@color/white"
+        android:textStyle="bold"
         android:layout_marginLeft="110dp"
         >
 
@@ -40,11 +41,9 @@
         android:id="@+id/toolbar5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
         android:background="#e7820e"
         android:minHeight="?attr/actionBarSize"
+        android:padding="8dp"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -52,8 +51,8 @@
 
         <ImageView
             android:id="@+id/logo"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_gravity="start"
             android:contentDescription="@string/stop2go"
             android:src="@drawable/logo3"
@@ -63,21 +62,22 @@
             app:layout_constraintTop_toTopOf="@+id/menu_back" />
 
         <ImageButton
-            android:id="@+id/home_button"
-            android:layout_width="wrap_content"
+            android:id="@+id/account_button"
+            android:layout_width="55dp"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:backgroundTint="@color/Transparency"
-            android:contentDescription="@string/home"
-            android:src="@drawable/home_button"
+            android:contentDescription="@string/accounts"
+            android:src="@drawable/account_button"
             app:layout_constraintBottom_toBottomOf="@+id/menu_back"
-            app:layout_constraintEnd_toStartOf="@+id/orders_button"
-            app:layout_constraintStart_toEndOf="@+id/textView2"
+            app:layout_constraintEnd_toEndOf="@+id/menu_back"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/my_orders_button"
             app:layout_constraintTop_toTopOf="@+id/menu_back" />
 
         <ImageButton
             android:id="@+id/cart_button"
-            android:layout_width="wrap_content"
+            android:layout_width="55dp"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:backgroundTint="@color/Transparency"
@@ -90,7 +90,7 @@
 
         <ImageButton
             android:id="@+id/orders_button"
-            android:layout_width="wrap_content"
+            android:layout_width="55dp"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:backgroundTint="@color/Transparency"
@@ -102,17 +102,16 @@
             app:layout_constraintTop_toTopOf="@+id/menu_back" />
 
         <ImageButton
-            android:id="@+id/account_button"
-            android:layout_width="wrap_content"
+            android:id="@+id/home_button"
+            android:layout_width="55dp"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:backgroundTint="@color/Transparency"
-            android:contentDescription="@string/accounts"
-            android:src="@drawable/account_button"
+            android:contentDescription="@string/home"
+            android:src="@drawable/home_button"
             app:layout_constraintBottom_toBottomOf="@+id/menu_back"
-            app:layout_constraintEnd_toEndOf="@+id/menu_back"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/my_orders_button"
+            app:layout_constraintEnd_toStartOf="@+id/orders_button"
+            app:layout_constraintStart_toEndOf="@+id/textView2"
             app:layout_constraintTop_toTopOf="@+id/menu_back" />
 
     </androidx.appcompat.widget.Toolbar>

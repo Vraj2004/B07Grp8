@@ -15,7 +15,7 @@
         android:text="Product Name:"
         android:textStyle="bold"
         android:textColor="@color/white"
-        android:textSize="40sp"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="@+id/save_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
@@ -52,7 +52,7 @@
         android:layout_height="wrap_content"
         android:text="Price goes here!"
         android:textColor="@color/white"
-        android:textSize="20dp"
+        android:textSize="20sp"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

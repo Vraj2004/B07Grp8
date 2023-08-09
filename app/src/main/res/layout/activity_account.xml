@@ -6,9 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient_background"
-    android:gravity="top"
-    android:orientation="vertical"
-    android:padding="15dp"
     tools:context=".Account">
 
     <androidx.appcompat.widget.Toolbar
@@ -17,6 +14,7 @@
         android:layout_height="wrap_content"
         android:background="#e7820e"
         android:minHeight="?attr/actionBarSize"
+        android:padding="8dp"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,8 +22,8 @@
 
         <ImageView
             android:id="@+id/logo"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_gravity="start"
             android:contentDescription="@string/stop2go"
             android:src="@drawable/logo3"
@@ -35,47 +33,8 @@
             app:layout_constraintTop_toTopOf="@+id/menu_back" />
 
         <ImageButton
-            android:id="@+id/home_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:backgroundTint="@color/Transparency"
-            android:contentDescription="@string/home"
-            android:src="@drawable/home_button"
-            app:layout_constraintBottom_toBottomOf="@+id/menu_back"
-            app:layout_constraintEnd_toStartOf="@+id/orders_button"
-            app:layout_constraintStart_toEndOf="@+id/textView2"
-            app:layout_constraintTop_toTopOf="@+id/menu_back" />
-
-        <!--ImageButton
-            android:id="@+id/cart_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:backgroundTint="@color/Transparency"
-            android:contentDescription="@string/cart"
-            android:src="@drawable/cart_button"
-            app:layout_constraintBottom_toBottomOf="@+id/menu_back"
-            app:layout_constraintEnd_toStartOf="@+id/my_orders_button"
-            app:layout_constraintStart_toEndOf="@+id/home_button"
-            app:layout_constraintTop_toTopOf="@+id/menu_back" /-->
-
-        <ImageButton
-            android:id="@+id/orders_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:backgroundTint="@color/Transparency"
-            android:contentDescription="@string/orders"
-            android:src="@drawable/orders_button"
-            app:layout_constraintBottom_toBottomOf="@+id/menu_back"
-            app:layout_constraintEnd_toStartOf="@+id/my_orders_button"
-            app:layout_constraintStart_toEndOf="@+id/home_button"
-            app:layout_constraintTop_toTopOf="@+id/menu_back" />
-
-        <ImageButton
             android:id="@+id/account_button"
-            android:layout_width="wrap_content"
+            android:layout_width="55dp"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:backgroundTint="@color/Transparency"
@@ -87,6 +46,45 @@
             app:layout_constraintStart_toEndOf="@+id/my_orders_button"
             app:layout_constraintTop_toTopOf="@+id/menu_back" />
 
+<!--        <ImageButton-->
+<!--            android:id="@+id/cart_button"-->
+<!--            android:layout_width="55dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="end"-->
+<!--            android:backgroundTint="@color/Transparency"-->
+<!--            android:contentDescription="@string/cart"-->
+<!--            android:src="@drawable/cart_button"-->
+<!--            app:layout_constraintBottom_toBottomOf="@+id/menu_back"-->
+<!--            app:layout_constraintEnd_toStartOf="@+id/my_orders_button"-->
+<!--            app:layout_constraintStart_toEndOf="@+id/home_button"-->
+<!--            app:layout_constraintTop_toTopOf="@+id/menu_back" />-->
+
+        <ImageButton
+            android:id="@+id/orders_button"
+            android:layout_width="55dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:backgroundTint="@color/Transparency"
+            android:contentDescription="@string/orders"
+            android:src="@drawable/orders_button"
+            app:layout_constraintBottom_toBottomOf="@+id/menu_back"
+            app:layout_constraintEnd_toStartOf="@+id/my_orders_button"
+            app:layout_constraintStart_toEndOf="@+id/home_button"
+            app:layout_constraintTop_toTopOf="@+id/menu_back" />
+
+        <ImageButton
+            android:id="@+id/home_button"
+            android:layout_width="55dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:backgroundTint="@color/Transparency"
+            android:contentDescription="@string/home"
+            android:src="@drawable/home_button"
+            app:layout_constraintBottom_toBottomOf="@+id/menu_back"
+            app:layout_constraintEnd_toStartOf="@+id/orders_button"
+            app:layout_constraintStart_toEndOf="@+id/textView2"
+            app:layout_constraintTop_toTopOf="@+id/menu_back" />
+
     </androidx.appcompat.widget.Toolbar>
 
 
@@ -95,37 +93,26 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="@string/account"
+        android:text="My Account"
         android:textColor="@color/white"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.521"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar5"
-        app:layout_constraintVertical_bias="0.022" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/account_button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/account_text"
-        app:layout_constraintHorizontal_bias="0.956"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.123" />
+        app:layout_constraintVertical_bias="0.046" />
 
     <TextView
         android:id="@+id/username_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="64dp"
         android:text="@string/username"
-        android:textColor="#000000"
-        android:textSize="25dp"
+        android:textColor="@color/white"
+        android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/username_content"
         app:layout_constraintStart_toStartOf="parent"
@@ -138,8 +125,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/email"
-        android:textColor="#000000"
-        android:textSize="25dp"
+        android:textColor="@color/white"
+        android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/username_text"
@@ -152,7 +139,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/password"
-        android:textColor="#000000"
+        android:textColor="@color/white"
         android:textSize="25dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -164,12 +151,13 @@
         android:id="@+id/username_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
+        android:layout_marginTop="5dp"
         android:background="#68606060"
         android:backgroundTint="#68606060"
-        android:text=" "
+        android:text=""
+        android:layout_marginLeft="15dp"
         android:textColor="@color/white"
-        android:textSize="20dp"
+        android:textSize="22sp"
         app:layout_constraintStart_toStartOf="@+id/username_text"
         app:layout_constraintTop_toBottomOf="@+id/username_text" />
 
@@ -177,12 +165,13 @@
         android:id="@+id/email_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
+        android:layout_marginTop="5dp"
         android:background="#68606060"
         android:backgroundTint="#68606060"
-        android:text=" "
+        android:text=""
         android:textColor="@color/white"
-        android:textSize="20dp"
+        android:layout_marginLeft="15dp"
+        android:textSize="22sp"
         app:layout_constraintStart_toStartOf="@+id/email_text"
         app:layout_constraintTop_toBottomOf="@+id/email_text" />
 
@@ -192,9 +181,10 @@
         android:layout_height="wrap_content"
         android:background="#68606060"
         android:backgroundTint="#68606060"
-        android:text=" "
+        android:text=""
         android:textColor="@color/white"
-        android:textSize="20dp"
+        android:textSize="22sp"
+        android:layout_marginLeft="15dp"
         app:layout_constraintStart_toStartOf="@+id/email_text"
         app:layout_constraintTop_toBottomOf="@+id/password_text" />
 
@@ -206,47 +196,48 @@
         android:backgroundTint="#e7820e"
         android:text="@string/sign_out"
         android:textColor="@color/white"
-        android:textSize="14sp"
+        android:textSize="17sp"
+        android:padding="15dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/ic_username_icon"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/username_text"
-        app:layout_constraintHorizontal_bias="0.894"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.281" />
+<!--    <ImageView-->
+<!--        android:id="@+id/imageView2"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@drawable/ic_username_icon"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/username_text"-->
+<!--        app:layout_constraintHorizontal_bias="1.0"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.281" />-->
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/baseline_email_24"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/email_text"
-        app:layout_constraintHorizontal_bias="0.906"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        app:layout_constraintVertical_bias="0.198" />
+<!--    <ImageView-->
+<!--        android:id="@+id/imageView3"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@drawable/baseline_email_24"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/email_text"-->
+<!--        app:layout_constraintHorizontal_bias="0.906"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/imageView2"-->
+<!--        app:layout_constraintVertical_bias="0.216" />-->
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="256dp"
-        android:background="@drawable/baseline_password_24"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/password_text"
-        app:layout_constraintHorizontal_bias="0.918"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3"
-        app:layout_constraintVertical_bias="1.0" />
+<!--    <ImageView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginBottom="256dp"-->
+<!--        android:background="@drawable/baseline_password_24"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/password_text"-->
+<!--        app:layout_constraintHorizontal_bias="0.906"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/imageView3"-->
+<!--        app:layout_constraintVertical_bias="0.944" />-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

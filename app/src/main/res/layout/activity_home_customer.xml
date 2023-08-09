@@ -8,101 +8,110 @@ android:background="@drawable/gradient_background"
 tools:context=".Home_Customer">
 
 
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_marginTop="70dp"
-    android:layout_marginBottom="98dp"
-    android:scrollbars="none">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="150dp"
+        android:layout_marginBottom="98dp"
+        android:scrollbars="none">
 
-    <LinearLayout
-        android:id="@+id/container"
+        <LinearLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        </LinearLayout>
+    </ScrollView>
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:background="#e7820e"
+        android:minHeight="?attr/actionBarSize"
+        android:padding="8dp"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    </LinearLayout>
-</ScrollView>
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="start"
+            android:contentDescription="@string/stop2go"
+            android:src="@drawable/logo3"
+            app:layout_constraintBottom_toBottomOf="@+id/menu_back"
+            app:layout_constraintEnd_toEndOf="@id/textView2"
+            app:layout_constraintStart_toStartOf="@+id/textView2"
+            app:layout_constraintTop_toTopOf="@+id/menu_back" />
 
-<androidx.appcompat.widget.Toolbar
-    android:id="@+id/toolbar5"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="8dp"
-    android:layout_marginTop="8dp"
-    android:layout_marginEnd="8dp"
-    android:background="#e7820e"
-    android:minHeight="?attr/actionBarSize"
-    android:theme="?attr/actionBarTheme"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent">
+        <ImageButton
+            android:id="@+id/account_button"
+            android:layout_width="55dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:backgroundTint="@color/Transparency"
+            android:contentDescription="@string/accounts"
+            android:src="@drawable/account_button"
+            app:layout_constraintBottom_toBottomOf="@+id/menu_back"
+            app:layout_constraintEnd_toEndOf="@+id/menu_back"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/my_orders_button"
+            app:layout_constraintTop_toTopOf="@+id/menu_back" />
 
-    <ImageView
-        android:id="@+id/logo"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_gravity="start"
-        android:contentDescription="@string/stop2go"
-        android:src="@drawable/logo3"
-        app:layout_constraintBottom_toBottomOf="@+id/menu_back"
-        app:layout_constraintEnd_toEndOf="@id/textView2"
-        app:layout_constraintStart_toStartOf="@+id/textView2"
-        app:layout_constraintTop_toTopOf="@+id/menu_back" />
+        <ImageButton
+            android:id="@+id/cart_button"
+            android:layout_width="55dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:backgroundTint="@color/Transparency"
+            android:contentDescription="@string/cart"
+            android:src="@drawable/cart_button"
+            app:layout_constraintBottom_toBottomOf="@+id/menu_back"
+            app:layout_constraintEnd_toStartOf="@+id/my_orders_button"
+            app:layout_constraintStart_toEndOf="@+id/home_button"
+            app:layout_constraintTop_toTopOf="@+id/menu_back" />
 
-    <ImageButton
-        android:id="@+id/home_button"
+        <ImageButton
+            android:id="@+id/orders_button"
+            android:layout_width="55dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:backgroundTint="@color/Transparency"
+            android:contentDescription="@string/orders"
+            android:src="@drawable/orders_button"
+            app:layout_constraintBottom_toBottomOf="@+id/menu_back"
+            app:layout_constraintEnd_toStartOf="@+id/my_orders_button"
+            app:layout_constraintStart_toEndOf="@+id/home_button"
+            app:layout_constraintTop_toTopOf="@+id/menu_back" />
+
+        <ImageButton
+            android:id="@+id/home_button"
+            android:layout_width="55dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:backgroundTint="@color/Transparency"
+            android:contentDescription="@string/home"
+            android:src="@drawable/home_button"
+            app:layout_constraintBottom_toBottomOf="@+id/menu_back"
+            app:layout_constraintEnd_toStartOf="@+id/orders_button"
+            app:layout_constraintStart_toEndOf="@+id/textView2"
+            app:layout_constraintTop_toTopOf="@+id/menu_back" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <TextView
+        android:id="@+id/hello_there"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:backgroundTint="@color/Transparency"
-        android:contentDescription="@string/home"
-        android:src="@drawable/home_button"
-        app:layout_constraintBottom_toBottomOf="@+id/menu_back"
-        app:layout_constraintEnd_toStartOf="@+id/orders_button"
-        app:layout_constraintStart_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toTopOf="@+id/menu_back" />
-
-    <ImageButton
-        android:id="@+id/cart_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:backgroundTint="@color/Transparency"
-        android:contentDescription="@string/cart"
-        android:src="@drawable/cart_button"
-        app:layout_constraintBottom_toBottomOf="@+id/menu_back"
-        app:layout_constraintEnd_toStartOf="@+id/my_orders_button"
-        app:layout_constraintStart_toEndOf="@+id/home_button"
-        app:layout_constraintTop_toTopOf="@+id/menu_back" />
-
-    <ImageButton
-        android:id="@+id/orders_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:backgroundTint="@color/Transparency"
-        android:contentDescription="@string/orders"
-        android:src="@drawable/orders_button"
-        app:layout_constraintBottom_toBottomOf="@+id/menu_back"
-        app:layout_constraintEnd_toStartOf="@+id/my_orders_button"
-        app:layout_constraintStart_toEndOf="@+id/home_button"
-        app:layout_constraintTop_toTopOf="@+id/menu_back" />
-
-    <ImageButton
-        android:id="@+id/account_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:backgroundTint="@color/Transparency"
-        android:contentDescription="@string/accounts"
-        android:src="@drawable/account_button"
-        app:layout_constraintBottom_toBottomOf="@+id/menu_back"
-        app:layout_constraintEnd_toEndOf="@+id/menu_back"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/my_orders_button"
-        app:layout_constraintTop_toTopOf="@+id/menu_back" />
-
-</androidx.appcompat.widget.Toolbar>
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="93dp"
+        android:text="Happy Shopping!"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:textStyle="italic"/>
 
 </RelativeLayout>
