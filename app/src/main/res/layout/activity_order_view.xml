@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/gradient_background"
+    android:background="@drawable/new_gradient"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:text="Order ID:"
         android:textColor="@color/white"
-        android:textSize="30sp"
+        android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,7 +39,7 @@
         android:id="@+id/toolbar5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#e7820e"
+        android:background="@drawable/toolbar"
         android:minHeight="?attr/actionBarSize"
         android:padding="8dp"
         android:theme="?attr/actionBarTheme"
@@ -131,26 +131,26 @@
     </ScrollView>
 
     <TextView
-        android:layout_width="153dp"
-        android:layout_height="43dp"
-        android:text=""
         android:id="@+id/status_text"
+        android:layout_width="153dp"
+        android:layout_height="35dp"
+        android:text=""
         android:textColor="@color/white"
-        android:textSize="30sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.593"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.95" />
+        app:layout_constraintVertical_bias="0.954" />
 
     <TextView
         android:layout_width="100dp"
-        android:layout_height="43dp"
+        android:layout_height="35dp"
         android:text="Status:"
-        android:textColor="@color/white"
-        android:textSize="30sp"
+        android:textColor="@color/color1"
+        android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

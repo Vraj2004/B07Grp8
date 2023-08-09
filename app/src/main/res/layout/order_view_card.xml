@@ -13,7 +13,8 @@
             android:layout_height="wrap_content"
             app:cardCornerRadius="10dp"
             android:layout_margin="12dp"
-            app:cardElevation="10dp">
+            app:cardElevation="10dp"
+            >
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -24,10 +25,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=""
-                    android:textColor="@color/endColor"
-                    android:layout_marginLeft="70dp"
+                    android:textColor="@color/color2"
+                    android:layout_marginLeft="60dp"
                     android:textFontWeight="1000"
-                    android:textSize="21sp"/>
+                    android:textSize="16sp"/>
 
                 <TextView
                     android:id="@+id/product_price"
@@ -35,45 +36,45 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="33dp"
                     android:text=""
-                    android:layout_marginLeft="68dp"
-                    android:textColor="@color/endColor"
+                    android:layout_marginLeft="58dp"
+                    android:textColor="@color/color2"
                     android:textFontWeight="1000"
-                    android:textSize="21sp"/>
+                    android:textSize="16sp"/>
                 <TextView
                     android:id="@+id/product_quantity"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="63dp"
                     android:text=""
-                    android:layout_marginLeft="98dp"
-                    android:textColor="@color/endColor"
+                    android:layout_marginLeft="85dp"
+                    android:textColor="@color/color2"
                     android:textFontWeight="1000"
-                    android:textSize="21sp"/>
+                    android:textSize="16sp"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Name:"
-                    android:textColor="@color/endColor"
+                    android:textColor="@color/color1"
                     android:textStyle="bold"
-                    android:textSize="21sp"/>
+                    android:textSize="18sp"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="33dp"
                     android:text="Price: "
-                    android:textColor="@color/endColor"
+                    android:textColor="@color/color1"
                     android:textStyle="bold"
-                    android:textSize="21sp"/>
+                    android:textSize="18sp"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="63dp"
                     android:text="Quantity: "
-                    android:textColor="@color/endColor"
+                    android:textColor="@color/color1"
                     android:textStyle="bold"
-                    android:textSize="21sp"/>
+                    android:textSize="18sp"/>
 
 
             </RelativeLayout>

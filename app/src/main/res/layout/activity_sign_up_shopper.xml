@@ -8,7 +8,7 @@
     android:gravity="center"
     android:padding="15dp"
     tools:context=".SignUp_Customer"
-    android:background="@drawable/gradient_background">
+    android:background="@drawable/new_gradient">
 
     <TextView
         android:text="@string/sign_up"
@@ -17,7 +17,7 @@
         android:gravity="center"
         android:textColor="#ffffff"
         android:layout_marginBottom="27dp"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         />
 
@@ -84,6 +84,17 @@
         android:backgroundTint="@color/white"
         android:background="@drawable/rounded_buttons_white"
         android:text="@string/sign_up"
-        android:textColor="@color/d32966" />
+        android:textColor="@color/color1" />
+
+    <TextView
+        android:text="Password must be at least 6 characters"
+        android:textSize="12sp"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="27dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
 
 </LinearLayout>

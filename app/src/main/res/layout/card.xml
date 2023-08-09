@@ -13,7 +13,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="12dp"
             app:cardCornerRadius="10dp"
-            app:cardElevation="10dp">
+            app:cardElevation="10dp"
+            >
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -23,7 +24,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Product:"
-                    android:textColor="@color/endColor"
+                    android:textColor="@color/color1"
                     android:textStyle="bold"
                     android:textSize="21sp"/>
 
@@ -32,26 +33,28 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=""
-                    android:textColor="@color/endColor"
+                    android:textColor="@color/color2"
                     android:textFontWeight="1000"
                     android:layout_marginTop="33dp"
-                    android:textSize="21sp"/>
+                    android:textSize="18sp"/>
 
                 <Button
                     android:id="@+id/delete_button"
-                    android:layout_width="80dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="270dp"
-                    android:background="@color/endColor"
+                    android:layout_marginLeft="220dp"
+                    android:textSize="10sp"
+                    android:background="@drawable/navy_rounded_buttons"
                     android:text="Delete"
                     android:textColor="@color/white"/>
 
                 <Button
                     android:id="@+id/edit_button"
-                    android:layout_width="80dp"
+                    android:layout_width="wrap_content"
+                    android:textSize="10sp"
                     android:layout_height="wrap_content"
-                    android:background="@color/endColor"
-                    android:layout_marginLeft="180dp"
+                    android:background="@drawable/navy_rounded_buttons"
+                    android:layout_marginLeft="115dp"
                     android:text="edit"
                     android:textColor="@color/white" />
 

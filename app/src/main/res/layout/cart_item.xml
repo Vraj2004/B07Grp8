@@ -13,74 +13,78 @@
             android:layout_height="wrap_content"
             app:cardCornerRadius="10dp"
             app:cardElevation="10dp"
-            android:layout_margin="12dp">
+            android:layout_margin="12dp"
+           >
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="15dp">
+                android:padding="15dp"
+                android:backgroundTint="#40ffffff">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Name:"
-                    android:textColor="@color/endColor"
+                    android:textColor="@color/color1"
                     android:textStyle="bold"
-                    android:textSize="21sp"/>
+                    android:textSize="18sp"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="35dp"
                     android:text="Price:"
-                    android:textColor="@color/endColor"
+                    android:textColor="@color/color1"
                     android:textStyle="bold"
-                    android:textSize="21sp"/>
+                    android:textSize="18sp"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="70dp"
                     android:text="Quantity:"
-                    android:textColor="@color/endColor"
+                    android:textColor="@color/color1"
                     android:textStyle="bold"
-                    android:textSize="21sp"/>
+                    android:textSize="18sp"/>
 
                 <TextView
                     android:id="@+id/product_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=""
-                    android:textColor="@color/endColor"
-                    android:layout_marginLeft="70dp"
-                    android:textSize="21sp"/>
+                    android:textColor="@color/color2"
+                    android:layout_marginLeft="60dp"
+                    android:textSize="16sp"/>
 
                 <TextView
                     android:id="@+id/product_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="53dp"
                     android:layout_marginTop="35dp"
                     android:text=""
-                    android:layout_marginLeft="65dp"
-                    android:textColor="@color/endColor"
-                    android:textSize="21sp"/>
+                    android:textColor="@color/color2"
+                    android:textSize="16sp" />
+
                 <TextView
                     android:id="@+id/product_quantity"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="78dp"
                     android:layout_marginTop="70dp"
                     android:text=""
-                    android:layout_marginLeft="94dp"
-                    android:textColor="@color/endColor"
-                    android:textSize="21sp"/>
+                    android:textColor="@color/color2"
+                    android:textSize="16sp" />
 
                 <Button
                     android:id="@+id/delete_btn"
-                    android:layout_width="100dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@color/endColor"
-                    android:layout_marginLeft="240dp"
+                    android:background="@drawable/navy_rounded_buttons"
+                    android:layout_marginLeft="220dp"
                     android:layout_marginTop="20dp"
                     android:textColor="@color/white"
+                    android:textSize="13dp"
                     android:text="Delete" />
 
 

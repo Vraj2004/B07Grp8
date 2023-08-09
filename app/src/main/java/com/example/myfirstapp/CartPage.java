@@ -143,6 +143,7 @@ public class CartPage extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 cart.clear();
+                layout.removeAllViews();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     for (DataSnapshot child : snapshot.child("Products").getChildren()) {
                         CartItem product = child.getValue(CartItem.class);
