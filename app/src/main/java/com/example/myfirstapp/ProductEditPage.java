@@ -3,9 +3,11 @@ package com.example.myfirstapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -34,7 +36,6 @@ public class ProductEditPage extends AppCompatActivity {
     String uId;
 
     String newPrice, newQuantity, newDescription;
-    public static final String SharedPrefs = "sharedPrefs";
 
 
     @Override
@@ -59,21 +60,27 @@ public class ProductEditPage extends AppCompatActivity {
         dbRef = FirebaseDatabase.getInstance().getReference();
         String productName = getIntent().getStringExtra("PRODUCT_NAME");
         prodName.setText(productName);
+        DatabaseReference ref = dbRef.child("Stores").child(uId).child("Items").child(productName);
 
-        dbRef.child("Stores").child(uId).child("Items").child(productName).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        ref.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onComplete(@NonNull Task<DataSnapshot> task) {
-                if (task.isSuccessful()) {
-                    DataSnapshot dataSnapshot = task.getResult();
-                    if (dataSnapshot.exists()) {
-                        ItemModel itemModel = dataSnapshot.getValue(ItemModel.class);
-                        price.setText(itemModel.getPrice());
-                        quantity.setText(itemModel.getQuantity());
-                        description.setText(itemModel.getDescription());
-                    }
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    priceText = dataSnapshot.child("price").getValue(String.class);
+                    quantityText = dataSnapshot.child("quantity").getValue(String.class);
+                    descriptionText = dataSnapshot.child("description").getValue(String.class);
+                    price.setText("Current Price: $" + priceText);
+                    quantity.setText("Current Stock: " +quantityText);
+                    description.setText("Current Description: " +descriptionText);
                 }
             }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Handle the error case
+            }
         });
+
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -91,76 +98,27 @@ public class ProductEditPage extends AppCompatActivity {
                 newDescription = editDescription.getText().toString();
 
                 // Check if any of the EditText fields are empty
-                if (!newPrice.isEmpty()) {
-                    price.setText(newPrice);
-                    priceText = newPrice;
-                } else {
-                    newPrice = "";
-                    priceText="";
+                if (TextUtils.isEmpty(editPrice.getText().toString().trim())) {
+                    newPrice = priceText;
                 }
 
-                if (!newQuantity.isEmpty()) {
-                    quantity.setText(newQuantity);
-                    quantityText = newQuantity;
-                } else {
-                    newQuantity = "";
-                    quantityText="";
+                if (TextUtils.isEmpty(editQuantity.getText().toString().trim())) {
+                    newQuantity = quantityText;
+                }
+                if (TextUtils.isEmpty(editDescription.getText().toString().trim())) {
+                    newDescription = descriptionText;
                 }
 
-                if (!newDescription.isEmpty()) {
-                    description.setText(newDescription);
-                    descriptionText = newDescription;
-                } else {
-                    newDescription = "";
-                    descriptionText="";
-                }
+                price.setText(newPrice);
+                quantity.setText(newQuantity);
+                description.setText(newDescription);
 
-                // Save non-empty values to SharedPreferences
-                if (!newPrice.isEmpty() || !newQuantity.isEmpty() || !newDescription.isEmpty()) {
-                    saveData();
-                }
 
-                ItemModel itemModel = new ItemModel(productName, priceText, quantityText, descriptionText);
+                ItemModel itemModel = new ItemModel(productName, newPrice, newQuantity, newDescription);
                 dbRef.child("Stores").child(uId).child("Items").child(productName).setValue(itemModel);
-
+                Intent intent = new Intent(getApplicationContext(), Home_Customer.class);
                 finish();
             }
         });
-
-        loadData();
-        updateViews();
-
     }
-    public void saveData() {
-        SharedPreferences sharedPreferences = getSharedPreferences(SharedPrefs, MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        if (!editPrice.getText().toString().isEmpty()) {
-            editor.putString("Price", editPrice.getText().toString());
-        }
-        if (!editQuantity.getText().toString().isEmpty()) {
-            editor.putString("Quantity", editQuantity.getText().toString());
-        }
-        if (!editDescription.getText().toString().isEmpty()) {
-            editor.putString("Description", editDescription.getText().toString());
-        }
-
-        editor.apply();
-
-        Toast.makeText(this, "SAVED", Toast.LENGTH_SHORT).show();
-    }
-
-    public void loadData() {
-        SharedPreferences sharedPreferences = getSharedPreferences(SharedPrefs, MODE_PRIVATE);
-        priceText = sharedPreferences.getString("Price", "Price: ");
-        quantityText = sharedPreferences.getString("Quantity", "Quantity: ");
-        descriptionText = sharedPreferences.getString("Description", "Description: ");
-
-    }
-
-    public void updateViews() {
-        price.setText(priceText);
-        quantity.setText(quantityText);
-        description.setText(descriptionText);
-    }
-
 }

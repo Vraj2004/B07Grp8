@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.myfirstapp.models.CartItem;
@@ -23,7 +24,8 @@ public class ItemPreview extends AppCompatActivity {
 
     DatabaseReference dbref;
     Button add_to_cart_button;
-    TextView priceText, descriptionText;
+    ImageButton back_button;
+    TextView priceText, descriptionText, productText;
     EditText quantityEdit;
     String uId = FirebaseAuth.getInstance().getCurrentUser().getUid();
     String storeId, productPrice, productName, storeName, productQuantity;
@@ -40,12 +42,22 @@ public class ItemPreview extends AppCompatActivity {
         descriptionText = findViewById(R.id.descriptionStuff);
         quantityEdit = findViewById(R.id.quantity_label);
         dbref = FirebaseDatabase.getInstance().getReference();
-
+        productText = findViewById(R.id.product_name_label);
+        back_button = findViewById(R.id.back_button);
         productName = getIntent().getStringExtra("PRODUCT_NAME");
         storeName = getIntent().getStringExtra("STORE_NAME");
         productPrice = getIntent().getStringExtra("PRODUCT_PRICE");
         storeId = getIntent().getStringExtra("STORE_ID");
+        productText.setText(productName);
         desc="";
+
+        back_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // startActivity(new Intent(ItemPreview.this, StoreHome.class));
+                finish();
+            }
+        });
         dbref.child("Stores").child(storeId).child("Items").child(productName).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

@@ -102,7 +102,6 @@ public class home_seller extends AppCompatActivity {
     }
 
     private void buildDialog() {
-        System.out.println("BUILD DIALOG HERE");
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         View view = getLayoutInflater().inflate(R.layout.dialog, null);
 
@@ -135,9 +134,6 @@ public class home_seller extends AppCompatActivity {
 
     public void addCard(ItemModel item) {
         String product = item.getName();
-        String price = item.getPrice();
-        String quantity = item.getQuantity();
-        String description = item.getDescription();
 
         View view_2 = getLayoutInflater().inflate(R.layout.card, null);
         TextView productView = view_2.findViewById(R.id.name);
@@ -145,16 +141,12 @@ public class home_seller extends AppCompatActivity {
         Button edit = view_2.findViewById(R.id.edit_button);
         productView.setText(product);
         layout.addView(view_2);
-        System.out.println("ADDING CARD FOR " + item.getName());
 
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), ProductEditPage.class);
                 intent.putExtra("PRODUCT_NAME", product);
-//                intent.putExtra("PRODUCT_PRICE", price);
-//                intent.putExtra("PRODUCT_QUANTITY", quantity);
-//                intent.putExtra("PRODUCT_DESCRIPTION", description);
                 startActivity(intent);
             }
         });
@@ -170,7 +162,6 @@ public class home_seller extends AppCompatActivity {
                                     //Toast.makeText(home_seller.this, "Item removed!", Toast.LENGTH_SHORT).show();
                                     dbRef.child("Stores").child(userID).child("Items").child(product).removeValue();
                                     layout.removeView(view_2);
-                                    System.out.println("removed" + product + " from db and view");
                                 } else {
                                     // An error occurred
                                     Log.e("Firebase", "Error removing item: " + databaseError.getMessage());
@@ -183,7 +174,6 @@ public class home_seller extends AppCompatActivity {
     }
     private void loadItems() {
         DatabaseReference itemsRef = dbRef.child("Stores").child(userID).child("Items");
-        System.out.println("LOADED DB STUFF");
 
         itemsRef.addChildEventListener(new ChildEventListener() {
             @Override
@@ -191,7 +181,6 @@ public class home_seller extends AppCompatActivity {
                 ItemModel item = dataSnapshot.getValue(ItemModel.class);
                 if (item != null) {
                     items.add(item);
-                    System.out.println("ADDED " + item.getName() + " to list");
                     addCard(item);
                 }
             }
@@ -217,30 +206,4 @@ public class home_seller extends AppCompatActivity {
             }
         });
     }
-
-//    private void loadItems() {
-//        DatabaseReference itemsRef = dbRef.child("Stores").child(userID).child("Items");
-//        System.out.println("LOADED DB STUFF");
-//
-//        itemsRef.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-//                    ItemModel item = snapshot.getValue(ItemModel.class);
-//                        items.add(item);
-//                        System.out.println("ADDED " + item.getName() + "to list");
-//                }
-//                for(ItemModel i : items)
-//                {
-//                    addCard(i);
-//                }
-////                Log.d("ProductList", "Loaded " + items.size() + " products from Firebase");
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError error) {
-//                System.err.println("Error loading products from Firebase: " + error.getMessage());
-//            }
-//        });
-//    }
 }

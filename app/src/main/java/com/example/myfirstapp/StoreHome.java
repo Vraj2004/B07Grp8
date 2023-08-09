@@ -116,7 +116,7 @@ public class StoreHome extends AppCompatActivity {
                 intent.putExtra("STORE_ID", storeID);
                 intent.putExtra("PRODUCT_QUANTITY", quantity);
                 startActivity(intent);
-                finish();
+                //finish();
             }
         });
         layout.addView(view_2);

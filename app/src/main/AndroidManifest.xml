@@ -70,6 +70,10 @@
             android:name=".Login"
             android:exported="true" />
         <activity
+            android:name=".LoginView"
+            android:exported="true" />
+
+        <activity
             android:name=".SignUp_Customer"
             android:exported="false" />
         <activity

@@ -31,7 +31,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class Login extends AppCompatActivity {
 
-    FirebaseDatabase db = FirebaseDatabase.getInstance();
+    DatabaseReference dbRef = FirebaseDatabase.getInstance().getReferenceFromUrl("https://b07-final-project-dbff5-default-rtdb.firebaseio.com/");
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +59,7 @@ public class Login extends AppCompatActivity {
                     public void onSuccess(AuthResult authResult) {
                         Toast.makeText(Login.this, "Login Successful", Toast.LENGTH_SHORT).show();
                         String id = mAuth.getUid();
-                        DatabaseReference userRef = db.getReference().child("Users").child(id);
+                        DatabaseReference userRef = dbRef.child("Users").child(id);
                         userRef.child("isOwner").addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
