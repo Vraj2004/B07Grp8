@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_background"
+    android:background="@drawable/new_gradient"
     tools:context=".checkoutPage">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#e7820e"
+        android:background="@drawable/toolbar"
         android:minHeight="?attr/actionBarSize"
         android:padding="8dp"
         android:theme="?attr/actionBarTheme"
@@ -118,16 +118,17 @@
     <Button
         android:id="@+id/finalOrderButton"
         android:layout_width="125dp"
-        android:layout_height="38dp"
-        android:background="@color/startColor"
+        android:layout_height="45dp"
+        android:background="@drawable/navy_rounded_buttons"
         android:text="Order"
         android:textColor="@color/white"
+        android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.926" />
+        app:layout_constraintVertical_bias="0.932" />
 
     <EditText
         android:id="@+id/firstName"
@@ -151,7 +152,7 @@
 
     <EditText
         android:id="@+id/address"
-        android:layout_width="350dp"
+        android:layout_width="320dp"
         android:layout_height="50dp"
         android:background="@drawable/rounded_buttons"
         android:drawablePadding="12dp"
@@ -193,7 +194,7 @@
 
     <EditText
         android:id="@+id/postalCode"
-        android:layout_width="350dp"
+        android:layout_width="320dp"
         android:layout_height="50dp"
         android:background="@drawable/rounded_buttons"
         android:drawablePadding="12dp"
@@ -228,7 +229,7 @@
 
     <EditText
         android:id="@+id/cardInfo"
-        android:layout_width="350dp"
+        android:layout_width="320dp"
         android:layout_height="50dp"
         android:background="@drawable/rounded_buttons"
         android:drawablePadding="12dp"
@@ -297,10 +298,10 @@
         android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.257"
+        app:layout_constraintHorizontal_bias="0.326"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.926" />
+        app:layout_constraintVertical_bias="0.856" />
 
     <TextView
         android:id="@+id/total_content"

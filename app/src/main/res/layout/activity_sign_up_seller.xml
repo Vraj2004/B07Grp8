@@ -8,7 +8,7 @@
     android:gravity="center"
     android:padding="15dp"
     tools:context=".SignUp_Owner"
-    android:background="@drawable/gradient_background">
+    android:background="@drawable/new_gradient">
 
     <TextView
         android:text="@string/sign_up"
@@ -108,6 +108,6 @@
         android:backgroundTint="@color/white"
         android:background="@drawable/rounded_buttons_white"
         android:text="@string/sign_up"
-        android:textColor="@color/d32966" />
+        android:textColor="@color/color1" />
 
 </LinearLayout>

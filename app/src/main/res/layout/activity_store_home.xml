@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_background"
+    android:background="@drawable/new_gradient"
     tools:context=".StoreHome">
 
     <TextView
@@ -13,10 +13,10 @@
         android:layout_marginTop="90dp"
         android:text="Store Name"
         android:id="@+id/store_name"
-        android:textSize="30sp"
+        android:textSize="25sp"
         android:textColor="@color/white"
         android:textStyle="bold"
-        android:layout_marginLeft="110dp"
+        android:layout_marginLeft="137dp"
         >
 
     </TextView>
@@ -41,7 +41,7 @@
         android:id="@+id/toolbar5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#e7820e"
+        android:background="@drawable/toolbar"
         android:minHeight="?attr/actionBarSize"
         android:padding="8dp"
         android:theme="?attr/actionBarTheme"
