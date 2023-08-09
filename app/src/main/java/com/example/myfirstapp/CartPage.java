@@ -112,7 +112,7 @@ public class CartPage extends AppCompatActivity {
         TextView priceView = view_2.findViewById(R.id.product_price);
         TextView quantView = view_2.findViewById(R.id.product_quantity);
         productView.setText(name);
-        priceView.setText(price);
+        priceView.setText("$" + price);
         quantView.setText(quantity);
         Button delete = view_2.findViewById(R.id.delete_btn);
         layout.addView(view_2);

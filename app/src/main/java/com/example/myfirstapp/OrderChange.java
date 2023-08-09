@@ -114,7 +114,7 @@ public class OrderChange extends AppCompatActivity {
         TextView priceView = view_2.findViewById(R.id.product_price);
         TextView quantView = view_2.findViewById(R.id.product_quantity);
         productView.setText(name);
-        priceView.setText(price);
+        priceView.setText("$" + price);
         quantView.setText(quantity);
         layout.addView(view_2);
     }

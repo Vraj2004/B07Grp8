@@ -103,7 +103,7 @@ public class StoreHome extends AppCompatActivity {
         TextView productView = view_2.findViewById(R.id.product_name);
         TextView priceView = view_2.findViewById(R.id.product_price);
         productView.setText(item);
-        priceView.setText(price);
+        priceView.setText("$" + price);
         Button preview = view_2.findViewById(R.id.preview_btn);
 
         preview.setOnClickListener(new View.OnClickListener() {

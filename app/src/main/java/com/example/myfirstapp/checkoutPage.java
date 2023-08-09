@@ -139,7 +139,7 @@ public class checkoutPage extends AppCompatActivity {
                     }
                 }
                 total = String.valueOf(tempTotal);
-                totalText.setText(total);
+                totalText.setText("$" + total);
             }
 
             @Override

@@ -62,7 +62,7 @@ public class ItemPreview extends AppCompatActivity {
         });
 
 
-        priceText.setText(productPrice);
+        priceText.setText("$" + productPrice);
 
         add_to_cart_button.setOnClickListener(new View.OnClickListener() {
             @Override

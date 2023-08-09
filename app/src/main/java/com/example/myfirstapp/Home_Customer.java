@@ -50,8 +50,6 @@ public class Home_Customer extends AppCompatActivity {
         stores = new ArrayList<>();
         hello = findViewById(R.id.hello_there);
 
-
-
         loadStores();
 
         home.setOnClickListener(new View.OnClickListener() {
