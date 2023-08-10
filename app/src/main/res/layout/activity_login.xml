@@ -8,7 +8,7 @@
     android:gravity="center"
     android:padding="15dp"
     android:background="@drawable/new_gradient"
-    tools:context=".LoginView">
+    tools:context=".Login">
 
 <!--    <Button-->
 <!--        android:layout_width="300dp"-->
@@ -23,11 +23,11 @@
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="464dp"
+        android:layout_marginBottom="448dp"
         android:contentDescription="@string/logo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.448"
+        app:layout_constraintHorizontal_bias="0.551"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/logo3" />
 

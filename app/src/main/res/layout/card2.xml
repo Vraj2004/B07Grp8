@@ -35,7 +35,7 @@
                     android:id="@+id/go_to_store_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="220dp"
+                    android:layout_marginLeft="260dp"
                     android:textSize="13dp"
                     android:background="@drawable/navy_rounded_buttons"
                     android:text="Visit"
