@@ -37,13 +37,13 @@
                     android:layout_marginTop="30dp"
                     android:text=""
                     android:textColor="@color/color2"
-                    android:textSize="15sp"/>
+                    android:textSize="12sp"/>
 
                 <Button
                     android:id="@+id/edit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="220dp"
+                    android:layout_marginLeft="260dp"
                     android:background="@drawable/navy_rounded_buttons"
                     android:textColor="@color/white"
                     android:text="Edit"

@@ -152,7 +152,7 @@
 
     <EditText
         android:id="@+id/address"
-        android:layout_width="320dp"
+        android:layout_width="340dp"
         android:layout_height="50dp"
         android:background="@drawable/rounded_buttons"
         android:drawablePadding="12dp"
@@ -194,7 +194,7 @@
 
     <EditText
         android:id="@+id/postalCode"
-        android:layout_width="320dp"
+        android:layout_width="340dp"
         android:layout_height="50dp"
         android:background="@drawable/rounded_buttons"
         android:drawablePadding="12dp"
@@ -229,7 +229,7 @@
 
     <EditText
         android:id="@+id/cardInfo"
-        android:layout_width="320dp"
+        android:layout_width="340dp"
         android:layout_height="50dp"
         android:background="@drawable/rounded_buttons"
         android:drawablePadding="12dp"

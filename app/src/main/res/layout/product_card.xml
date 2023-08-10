@@ -60,7 +60,7 @@
                     android:id="@+id/preview_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="210dp"
+                    android:layout_marginLeft="260dp"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/navy_rounded_buttons"
                     android:textColor="@color/white"
