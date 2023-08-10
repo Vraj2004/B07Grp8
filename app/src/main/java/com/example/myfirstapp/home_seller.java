@@ -38,6 +38,7 @@ import java.util.List;
 public class home_seller extends AppCompatActivity {
 
     DatabaseReference dbRef;
+    FirebaseAuth fAuth = FirebaseAuth.getInstance();
     FirebaseDatabase db = FirebaseDatabase.getInstance();
     Button add;
     ImageButton home;
@@ -53,20 +54,19 @@ public class home_seller extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_seller);
 
-        userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        dbRef = FirebaseDatabase.getInstance().getReference();
+        dbRef = db.getReference();
         add = findViewById(R.id.add_button);
         layout = findViewById(R.id.container);
         home = findViewById(R.id.home_button);
         orders = findViewById(R.id.orders_button);
         account = findViewById(R.id.account_button);
+        userID = fAuth.getUid();
         items = new HashSet<>();
         loadItems();
 
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                System.out.println("ADD BUTTON CLICKED");
                 buildDialog();
                 dialog.show();
             }
@@ -173,6 +173,7 @@ public class home_seller extends AppCompatActivity {
 
     }
     private void loadItems() {
+
         DatabaseReference itemsRef = dbRef.child("Stores").child(userID).child("Items");
 
         itemsRef.addChildEventListener(new ChildEventListener() {
