@@ -49,7 +49,6 @@ public class ExampleUnitTest {
         verify(model).login();
 
     }
-
     @Test
     public void userFoundCorrectPass() {
         when(view.getPassword()).thenReturn("sinatraa");
