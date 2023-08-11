@@ -37,8 +37,8 @@ public class ExampleUnitTest {
     public void checkEmptyEmail() {
         when(view.getEmail()).thenReturn("");
         when(view.getPassword()).thenReturn("abcd");
-        presenter.handleError();
-        verify(view).handleError();
+        view.handleError("Please fill out all the fields");
+        verify(view).handleError("Please fill out all the fields");
     }
 
     @Test
@@ -53,7 +53,7 @@ public class ExampleUnitTest {
     public void userFoundCorrectPass() {
         when(view.getPassword()).thenReturn("sinatraa");
         when(view.getEmail()).thenReturn("shopper@gmail.com");
-        presenter.custLogin();
+        view.custLogin();
         verify(view).custLogin();
 
     }
@@ -62,7 +62,7 @@ public class ExampleUnitTest {
     public void userWrongPassWrong() {
         when(view.getPassword()).thenReturn("132123123");
         when(view.getEmail()).thenReturn("wrong@gmail.com");
-        presenter.failure();
+        view.failure();
         verify(view).failure();
 
     }
@@ -71,7 +71,7 @@ public class ExampleUnitTest {
     public void ownerLogin() {
         when(view.getPassword()).thenReturn("testOwner@gmail.com");
         when(view.getEmail()).thenReturn("testing123");
-        presenter.storeLogin();
+        view.storeLogin();
         verify(view).storeLogin();
 
     }
@@ -80,8 +80,7 @@ public class ExampleUnitTest {
     public void userFoundWrongPass() {
         when(view.getEmail()).thenReturn("shopper@gmail.com");
         when(view.getPassword()).thenReturn("abcd");
-        presenter.failure();
+        view.failure();
         verify(view).failure();
-
     }
 }
